@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ScamShield</title>
+    <meta name="description" content="FraudsFilter helps identify suspicious messages, fraudulent links and potential online scams.">
+
+    <title>FraudsFilter | Digital Safety Analyzer</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,12 +20,43 @@
 
         <div class="brand">
 
+            <!-- CUSTOM FRAUDSFILTER LOGO -->
             <div class="brand-icon">
-                🛡️
+                <svg viewBox="0 0 64 64"
+                     xmlns="http://www.w3.org/2000/svg"
+                     role="img"
+                     aria-label="FraudsFilter shield logo">
+
+                    <path d="M32 4 L53 12 V28
+                             C53 42 44 53 32 60
+                             C20 53 11 42 11 28 V12 Z"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="4"
+                          stroke-linejoin="round"/>
+
+                    <circle cx="28" cy="27" r="9"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="4"/>
+
+                    <path d="M35 34 L45 44"
+                          stroke="currentColor"
+                          stroke-width="5"
+                          stroke-linecap="round"/>
+
+                    <path d="M23 27 L27 31 L34 23"
+                          fill="none"
+                          stroke="#F59E0B"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+
+                </svg>
             </div>
 
             <div>
-                <h1>ScamShield</h1>
+                <h1>FraudsFilter</h1>
                 <p>Think before you click.</p>
             </div>
 
@@ -53,7 +87,7 @@
 
             <p>
                 Paste an SMS, email, WhatsApp message, job offer,
-                payment request, or URL. ScamShield checks for
+                payment request, or URL. FraudsFilter checks for
                 common warning signs and explains them.
             </p>
 
@@ -66,7 +100,6 @@
             <div class="section-heading">
 
                 <div>
-
                     <h3>
                         🔍 Scan Content
                     </h3>
@@ -74,7 +107,6 @@
                     <p>
                         Paste the suspicious content below.
                     </p>
-
                 </div>
 
                 <button
@@ -91,8 +123,7 @@
 
             <textarea
                 id="messageInput"
-                placeholder="Paste a suspicious SMS, email, WhatsApp message or URL here...">
-            </textarea>
+                placeholder="Paste a suspicious SMS, email, WhatsApp message or URL here..."></textarea>
 
 
             <div class="input-footer">
@@ -106,13 +137,8 @@
                     id="analyzeBtn"
                     type="button">
 
-                    <span>
-                        Analyze
-                    </span>
-
-                    <span>
-                        →
-                    </span>
+                    <span>Analyze</span>
+                    <span>→</span>
 
                 </button>
 
@@ -129,7 +155,6 @@
             <div class="result-top">
 
                 <div>
-
                     <span class="eyebrow">
                         ANALYSIS RESULT
                     </span>
@@ -137,7 +162,6 @@
                     <h3 id="riskTitle">
                         Analysis Complete
                     </h3>
-
                 </div>
 
                 <div
@@ -158,13 +182,9 @@
                     class="score-circle"
                     id="scoreCircle">
 
-                    <span id="scoreValue">
-                        0
-                    </span>
+                    <span id="scoreValue">0</span>
 
-                    <small>
-                        /100
-                    </small>
+                    <small>/100</small>
 
                 </div>
 
@@ -225,8 +245,7 @@
                     🔎 Why is this suspicious?
                 </h4>
 
-                <ul id="reasonsList">
-                </ul>
+                <ul id="reasonsList"></ul>
 
             </div>
 
@@ -238,8 +257,7 @@
                     🛡️ What should you do?
                 </h4>
 
-                <ul id="recommendationsList">
-                </ul>
+                <ul id="recommendationsList"></ul>
 
             </div>
 
@@ -247,9 +265,7 @@
             <!-- DISCLAIMER -->
             <div class="disclaimer">
 
-                <strong>
-                    Important:
-                </strong>
+                <strong>Important:</strong>
 
                 This prototype provides a risk assessment,
                 not a guarantee that content is fraudulent
@@ -268,9 +284,7 @@
 
                 <span>📩</span>
 
-                <h4>
-                    Message Analysis
-                </h4>
+                <h4>Message Analysis</h4>
 
                 <p>
                     Detect common scam language and
@@ -284,9 +298,7 @@
 
                 <span>🔗</span>
 
-                <h4>
-                    URL Analysis
-                </h4>
+                <h4>URL Analysis</h4>
 
                 <p>
                     Check links for suspicious
@@ -300,9 +312,7 @@
 
                 <span>💡</span>
 
-                <h4>
-                    Explainable Results
-                </h4>
+                <h4>Explainable Results</h4>
 
                 <p>
                     See why the content received
@@ -320,12 +330,17 @@
     <footer>
 
         <p>
-            ScamShield • College Project Prototype
+            FraudsFilter • College Project Prototype
+        </p>
+
+        <p class="footer-tagline">
+            Stay alert. Stay protected.
         </p>
 
     </footer>
 
 
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
