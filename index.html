@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,15 +55,24 @@
             </div>
 
             <div>
-                <h1>FraudsFilter</h1>
-                <p>Think before you click.</p>
+                <h1 id="brandTitle">FraudsFilter</h1>
+                <p id="brandTagline">Think before you click.</p>
             </div>
 
         </div>
 
-        <span class="prototype-badge">
-            Prototype
-        </span>
+        <!-- LANGUAGE SWITCHER & PROTOTYPE BADGE -->
+        <div class="topbar-actions">
+            <div class="lang-switch-container" aria-label="Language selection">
+                <button type="button" class="lang-btn active" data-lang="en">English</button>
+                <button type="button" class="lang-btn" data-lang="hi">Hinglish</button>
+                <button type="button" class="lang-btn" data-lang="bn">বাংলা</button>
+            </div>
+
+            <span class="prototype-badge">
+                Prototype
+            </span>
+        </div>
 
     </header>
 
@@ -75,21 +83,26 @@
         <!-- HERO -->
         <section class="hero">
 
-            <span class="eyebrow">
+            <span class="eyebrow" id="heroEyebrow">
                 DIGITAL SAFETY ANALYZER
             </span>
 
-            <h2>
+            <h2 id="heroTitle">
                 Understand suspicious messages
                 <br>
                 before you act.
             </h2>
 
-            <p>
+            <p id="heroDesc">
                 Paste an SMS, email, WhatsApp message, job offer,
                 payment request, or URL. FraudsFilter checks for
                 common warning signs and explains them.
             </p>
+
+            <!-- PRIVACY INFORMATION -->
+            <div class="privacy-note" id="privacyBanner">
+                🔒 Everything is analyzed in your browser. Your messages are not uploaded to any server.
+            </div>
 
         </section>
 
@@ -100,11 +113,11 @@
             <div class="section-heading">
 
                 <div>
-                    <h3>
+                    <h3 id="scanTitle">
                         🔍 Scan Content
                     </h3>
 
-                    <p>
+                    <p id="scanDesc">
                         Paste the suspicious content below.
                     </p>
                 </div>
@@ -120,6 +133,8 @@
 
             </div>
 
+            <!-- INLINE ERROR MESSAGE -->
+            <div class="inline-error hidden" id="inlineError" role="alert"></div>
 
             <textarea
                 id="messageInput"
@@ -155,7 +170,7 @@
             <div class="result-top">
 
                 <div>
-                    <span class="eyebrow">
+                    <span class="eyebrow" id="resultEyebrow">
                         ANALYSIS RESULT
                     </span>
 
@@ -175,16 +190,16 @@
             </div>
 
 
-            <!-- SCORE -->
+            <!-- SCORE & CONFIDENCE -->
             <div class="score-row">
 
                 <div
                     class="score-circle"
                     id="scoreCircle">
 
-                    <span id="scoreValue">0</span>
+                    <span id="scoreValue" class="conf-text">LOW</span>
 
-                    <small>/100</small>
+                    <small id="scoreUnit">CONFIDENCE</small>
 
                 </div>
 
@@ -205,12 +220,24 @@
             </div>
 
 
+            <!-- HIGHLIGHTED CONTENT -->
+            <div class="result-section highlighted-section" id="highlightedSection">
+
+                <h4 id="highlightedTitle">
+                    🔍 Highlighted Message
+                </h4>
+
+                <div class="highlighted-content" id="highlightedContent"></div>
+
+            </div>
+
+
             <!-- DETECTION GRID -->
             <div class="result-grid">
 
                 <div class="result-section">
 
-                    <h4>
+                    <h4 id="indicatorsHeading">
                         🚨 Detected Indicators
                     </h4>
 
@@ -224,8 +251,8 @@
 
                 <div class="result-section">
 
-                    <h4>
-                        🧠 Scam Pattern
+                    <h4 id="categoriesHeading">
+                        🧠 Scam Patterns
                     </h4>
 
                     <div
@@ -241,7 +268,7 @@
             <!-- REASONS -->
             <div class="result-section explanation">
 
-                <h4>
+                <h4 id="reasonsHeading">
                     🔎 Why is this suspicious?
                 </h4>
 
@@ -253,11 +280,77 @@
             <!-- RECOMMENDATIONS -->
             <div class="result-section recommendation">
 
-                <h4>
+                <h4 id="recommendationsHeading">
                     🛡️ What should you do?
                 </h4>
 
                 <ul id="recommendationsList"></ul>
+
+            </div>
+
+
+            <!-- ACTIONS: COPY & SHARE -->
+            <div class="result-actions">
+
+                <button type="button" class="action-btn" id="copyResultBtn">
+                    📋 Copy Result
+                </button>
+
+                <button type="button" class="action-btn" id="shareResultBtn">
+                    ↗️ Share Result
+                </button>
+
+                <span class="action-feedback hidden" id="actionFeedback"></span>
+
+            </div>
+
+
+            <!-- USER FEEDBACK SYSTEM -->
+            <div class="result-section feedback-section" id="feedbackSection">
+
+                <h4 id="feedbackTitle">
+                    💬 Was this correct?
+                </h4>
+
+                <div class="feedback-options">
+
+                    <button type="button" class="feedback-btn" data-feedback="correct">
+                        ✅ Correct Detection
+                    </button>
+
+                    <button type="button" class="feedback-btn" data-feedback="false_positive">
+                        ⚠️ False Positive
+                    </button>
+
+                    <button type="button" class="feedback-btn" data-feedback="missed_scam">
+                        ❌ Missed Scam
+                    </button>
+
+                </div>
+
+                <div class="feedback-form hidden" id="feedbackForm">
+
+                    <input
+                        type="text"
+                        id="feedbackNotes"
+                        class="feedback-input"
+                        placeholder="Optional note (e.g. why this was incorrect)...">
+
+                    <div class="feedback-actions">
+
+                        <button type="button" class="feedback-submit-btn" id="submitFeedbackBtn">
+                            Submit Feedback
+                        </button>
+
+                        <button type="button" class="feedback-export-btn" id="exportFeedbackBtn">
+                            Export Feedback Data (JSON)
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="feedback-status hidden" id="feedbackStatus"></div>
 
             </div>
 
@@ -267,10 +360,12 @@
 
                 <strong>Important:</strong>
 
-                This prototype provides a risk assessment,
-                not a guarantee that content is fraudulent
-                or legitimate. Always verify important
-                requests through an independent official channel.
+                <span id="disclaimerText">
+                    This prototype provides a risk assessment,
+                    not a guarantee that content is fraudulent
+                    or legitimate. Always verify important
+                    requests through an independent official channel.
+                </span>
 
             </div>
 
@@ -287,7 +382,7 @@
                 <h4>Message Analysis</h4>
 
                 <p>
-                    Detect common scam language and
+                    Detect common scam language, India-specific threats, and
                     social-engineering patterns.
                 </p>
 
@@ -301,8 +396,8 @@
                 <h4>URL Analysis</h4>
 
                 <p>
-                    Check links for suspicious
-                    structural characteristics.
+                    Check links for domain spoofing, URL shorteners,
+                    and suspicious extensions.
                 </p>
 
             </div>
@@ -315,7 +410,7 @@
                 <h4>Explainable Results</h4>
 
                 <p>
-                    See why the content received
+                    See confidence levels and why the content received
                     its risk assessment.
                 </p>
 
@@ -340,8 +435,8 @@
     </footer>
 
 
-    <!-- JAVASCRIPT -->
-    <script src="script.js"></script>
+    <!-- JAVASCRIPT MODULE ENTRY POINT -->
+    <script type="module" src="script.js"></script>
 
 </body>
 

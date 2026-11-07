@@ -1,0 +1,657 @@
+{
+  "categories": [
+    {
+      "id": "urgency",
+      "name": "Urgency",
+      "points": 12,
+      "reason": {
+        "en": "Uses urgency or time pressure to push the recipient into acting quickly without thinking.",
+        "hi": "प्राप्तकर्ता को बिना सोचे-समझे तुरंत निर्णय लेने के लिए दबाव या समय सीमा का उपयोग करता है।",
+        "bn": "চিন্তা করার সময় না দিয়ে প্রাপককে দ্রুত পদক্ষেপ নিতে বাধ্য করার জন্য তাড়া বা সময়সীমার চাপ সৃষ্টি করে।"
+      },
+      "words": {
+        "en": [
+          "urgent",
+          "urgently",
+          "immediately",
+          "act now",
+          "right now",
+          "within 24 hours",
+          "last chance",
+          "expires today",
+          "immediate action required",
+          "limited time",
+          "within 2 hours",
+          "final notice"
+        ],
+        "hi": [
+          "turant",
+          "abhi karein",
+          "jaldi karein",
+          "sirf aaj ke liye",
+          "24 ghante ke andar",
+          "aaj hi karein",
+          "aakhri mauka",
+          "antim avsar"
+        ],
+        "bn": [
+          "ekhoni",
+          "druto korun",
+          "shesh shujog",
+          "shomoy shesh",
+          "24 ghontar moddhe",
+          "ajkei shesh din",
+          "shorboshesh suchona"
+        ]
+      }
+    },
+    {
+      "id": "threat_fear",
+      "name": "Threat / Fear",
+      "points": 14,
+      "reason": {
+        "en": "Uses fear, threats, legal consequences, or service disconnection to coerce action.",
+        "hi": "दबाव बनाने के लिए भय, कानूनी कार्रवाई या सेवा बंद होने की धमकी का उपयोग करता है।",
+        "bn": "পদক্ষেপ নিতে বাধ্য করার জন্য ভয়, আইনি ব্যবস্থা বা পরিষেবা বন্ধের হুমকি ব্যবহার করে।"
+      },
+      "words": {
+        "en": [
+          "account blocked",
+          "account suspended",
+          "legal action",
+          "police",
+          "arrest",
+          "penalty",
+          "will be blocked",
+          "will be suspended",
+          "power will be disconnected",
+          "electricity will be disconnected",
+          "sim blocked",
+          "court summons",
+          "case registered against you",
+          "fine imposed"
+        ],
+        "hi": [
+          "khata band",
+          "account block",
+          "bijli kaat di jayegi",
+          "bijli cut",
+          "kanuni karwai",
+          "police complaint",
+          "giraftari",
+          "jurmana",
+          "line disconnect",
+          "light kaat di jayegi",
+          "sim band ho jayega"
+        ],
+        "bn": [
+          "account bondho hobe",
+          "account block",
+          "biddut line kete dewa hobe",
+          "line kete dewa hobe",
+          "biddut connection kata hobe",
+          "police arrest korbe",
+          "kanuni byabostha",
+          "shasti paben",
+          "sim bondho hobe"
+        ]
+      }
+    },
+    {
+      "id": "credential_request",
+      "name": "Credential Request",
+      "points": 18,
+      "reason": {
+        "en": "Requests sensitive personal credentials, OTPs, passwords, or authentication PINs.",
+        "hi": "संवेदनशील व्यक्तिगत क्रेडेंशियल, ओटीपी, पासवर्ड या पिन की मांग करता है।",
+        "bn": "সংবেদনশীল ব্যক্তিগত শংসাপত্র, ওটিপি, পাসওয়ার্ড বা প্রমাণীকরণ পিন অনুরোধ করে।"
+      },
+      "words": {
+        "en": [
+          "otp",
+          "one time password",
+          "password",
+          "pin",
+          "cvv",
+          "verification code",
+          "login details",
+          "netbanking password",
+          "card details",
+          "atm pin",
+          "security code"
+        ],
+        "hi": [
+          "otp bataye",
+          "otp share kare",
+          "otp bheje",
+          "pin dale",
+          "password bataye",
+          "login details de",
+          "cvv number"
+        ],
+        "bn": [
+          "otp share korun",
+          "otp pathan",
+          "pin din",
+          "password din",
+          "cvv number",
+          "gopon pin"
+        ]
+      }
+    },
+    {
+      "id": "upi_payment_scam",
+      "name": "Payment Request & UPI Fraud",
+      "points": 16,
+      "reason": {
+        "en": "Requests upfront money, transfer, or tricks into entering a UPI PIN to 'receive' money.",
+        "hi": "पैसे भेजने की मांग करता है या पैसे 'प्राप्त' करने के बहाने यूपीआई पिन दर्ज करने का झांसा देता है।",
+        "bn": "টাকা পাঠানোর দাবি করে বা টাকা 'পাওয়ার' ছলে ইউপিআই পিন প্রবেশ করানোর ফাঁদ পাতে।"
+      },
+      "words": {
+        "en": [
+          "send money",
+          "transfer money",
+          "pay now",
+          "payment required",
+          "processing fee",
+          "registration fee",
+          "security deposit",
+          "advance fee",
+          "refundable deposit",
+          "enter upi pin to receive",
+          "upi pin to receive money",
+          "receive money enter pin",
+          "scan qr code to receive",
+          "pay ₹",
+          "pay rs"
+        ],
+        "hi": [
+          "paise bheje",
+          "paise transfer kare",
+          "processing fee jama kare",
+          "advance paise",
+          "paise pane ke liye pin dale",
+          "pin daal kar paise receive",
+          "qr code scan karke paise paye",
+          "registration charges",
+          "security fees"
+        ],
+        "bn": [
+          "taka pathan",
+          "taka transfer korun",
+          "taka pete upi pin din",
+          "advance fee dite hobe",
+          "qr code scan kore taka paben",
+          "registration fee pathan",
+          "security deposit din"
+        ]
+      }
+    },
+    {
+      "id": "account_kyc",
+      "name": "Account & KYC Verification",
+      "points": 14,
+      "reason": {
+        "en": "Creates a fake necessity for updating KYC, Aadhaar-PAN linking, or account unfreezing.",
+        "hi": "केवाईसी अपडेट, आधार-पैन लिंकिंग या खाता अनफ़्रीज़ करने की नकली आवश्यकता पैदा करता है।",
+        "bn": "কেওয়াইসি আপডেট, আধার-প্যান লিঙ্কিং বা অ্যাকাউন্ট পুনরায় সক্রিয় করার মিথ্যা অজুহাত তৈরি করে।"
+      },
+      "words": {
+        "en": [
+          "kyc update",
+          "update your account",
+          "verify kyc",
+          "account verification",
+          "reactivate account",
+          "pan card update",
+          "aadhaar link",
+          "yono account",
+          "e-kyc pending",
+          "submit kyc",
+          "kyc suspended",
+          "unblock account"
+        ],
+        "hi": [
+          "kyc update kare",
+          "pan link kare",
+          "aadhaar card link kare",
+          "yono block",
+          "khata unblock kare",
+          "e-kyc complete kare",
+          "kyc nahi hua to"
+        ],
+        "bn": [
+          "kyc update korun",
+          "pan card link korun",
+          "aadhaar link korun",
+          "account unblock korun",
+          "kyc sesh korun",
+          "kyc joma din"
+        ]
+      }
+    },
+    {
+      "id": "lottery_reward",
+      "name": "Fake Reward / Lottery",
+      "points": 15,
+      "reason": {
+        "en": "Lures with prizes, lotteries, lucky draws, or government grants to extract money or data.",
+        "hi": "पैसे या डेटा निकालने के लिए पुरस्कार, लॉटरी या लकी ड्रॉ का लालच देता है।",
+        "bn": "টাকা বা ব্যক্তিগত তথ্য হাতিয়ে নিতে পুরস্কার, লটারি বা লাকি ড্রয়ের প্রলোভন দেখায়।"
+      },
+      "words": {
+        "en": [
+          "you won",
+          "winner",
+          "lottery",
+          "prize",
+          "cash reward",
+          "free gift",
+          "congratulations",
+          "claim your reward",
+          "lucky draw",
+          "jackpot",
+          "kbc lottery",
+          "selected for reward",
+          "gift voucher",
+          "exclusive bonus"
+        ],
+        "hi": [
+          "aapne jeeta hai",
+          "inami rashi",
+          "lucky draw me jeeta",
+          "lottery lag gayi",
+          "inaam jeete",
+          "muft uphar",
+          "reward claim kare",
+          "kbc jackpot"
+        ],
+        "bn": [
+          "apni jitechen",
+          "puroshkar",
+          "lottery jitechen",
+          "free gift paben",
+          "lucky draw te jitechen",
+          "taka claim korun",
+          "bisesh upohar"
+        ]
+      }
+    },
+    {
+      "id": "fake_job",
+      "name": "Fake Job / Task Scam",
+      "points": 14,
+      "reason": {
+        "en": "Promises easy daily income, part-time tasks, or YouTube/Telegram rating jobs requiring upfront deposits.",
+        "hi": "आसान दैनिक आय, अंशकालिक कार्य, या यूट्यूब/टेलीग्राम टास्क के नाम पर अग्रिम राशि ऐंठने का प्रयास।",
+        "bn": "সহজ দৈনিক আয়, পার্ট-টাইম কাজ বা ইউটিউব/টেলিগ্রাম টাস্কের নামে অগ্রিম টাকা হাতিয়ে নেওয়ার চেষ্টা।"
+      },
+      "words": {
+        "en": [
+          "work from home",
+          "easy money",
+          "guaranteed income",
+          "earn daily",
+          "job offer",
+          "part time job",
+          "earn money daily",
+          "telegram task",
+          "like youtube videos",
+          "daily payout",
+          "prepaid task",
+          "hotel review job",
+          "per day salary"
+        ],
+        "hi": [
+          "ghar baithe kamaye",
+          "rozana kamaye",
+          "daily kamai",
+          "part time kaam",
+          "video like karke paise",
+          "telegram task karke",
+          "roz 2000 kamaye"
+        ],
+        "bn": [
+          "ghor boshe aay",
+          "protidin taka aay",
+          "shohaje taka rojgar",
+          "video like kore taka",
+          "part time chakri",
+          "telegram task kore taka"
+        ]
+      }
+    },
+    {
+      "id": "authority_impersonation",
+      "name": "Authority & Courier Impersonation",
+      "points": 14,
+      "reason": {
+        "en": "Impersonates police, customs, courier (FedEx), electricity board, or government officials.",
+        "hi": "पुलिस, कस्टम्स, कूरियर (FedEx), बिजली विभाग, या सरकारी अधिकारियों का रूप धारण करता है।",
+        "bn": "পুলিশ, কাস্টমস, কুরিয়ার (FedEx), বিদ্যুৎ পর্ষদ বা সরকারি কর্মকর্তার ছদ্মবেশ ধারণ করে।"
+      },
+      "words": {
+        "en": [
+          "bank officer",
+          "customer care officer",
+          "police officer",
+          "government officer",
+          "cbi officer",
+          "cyber crime department",
+          "customs officer",
+          "customs department",
+          "electricity officer",
+          "parcel seized",
+          "fedex parcel illegal",
+          "pm kisan yojana",
+          "pm mudra loan",
+          "narcotics in package"
+        ],
+        "hi": [
+          "sarkari afsar",
+          "police inspector",
+          "bijli vibhag",
+          "customs me parcel",
+          "fedex courier seized",
+          "pm kisan samman",
+          "cyber crime officer",
+          "parcel me drugs"
+        ],
+        "bn": [
+          "biddut karmachari",
+          "police karmachari",
+          "sarkari karmi",
+          "customs theke parcel",
+          "cbi theke bolchi",
+          "parcel seized hoyeche"
+        ]
+      }
+    }
+  ],
+
+  "url_rules": {
+    "suspicious_words": [
+      "login",
+      "verify",
+      "verification",
+      "secure",
+      "account",
+      "update",
+      "payment",
+      "wallet",
+      "bank",
+      "kyc",
+      "otp",
+      "password",
+      "claim",
+      "refund",
+      "signin",
+      "authenticate",
+      "portal",
+      "yono",
+      "free-recharge"
+    ],
+    "combinations": [
+      {
+        "words": ["payment", "verification"],
+        "points": 25,
+        "name": "Payment verification pattern",
+        "reason": {
+          "en": "The URL combines payment and verification terms.",
+          "hi": "यूआरएल में भुगतान और सत्यापन दोनों शब्द शामिल हैं।",
+          "bn": "ইউআরএল-এ পেমেন্ট এবং যাচাইকরণ শব্দ দুটি একসাথে রয়েছে।"
+        }
+      },
+      {
+        "words": ["account", "login"],
+        "points": 20,
+        "name": "Account login pattern",
+        "reason": {
+          "en": "The URL combines account and login terms.",
+          "hi": "यूआरएल में अकाउंट और लॉगिन शब्द शामिल हैं।",
+          "bn": "ইউআরএল-এ অ্যাকাউন্ট এবং লগইন শব্দ রয়েছে।"
+        }
+      },
+      {
+        "words": ["bank", "login"],
+        "points": 25,
+        "name": "Bank login pattern",
+        "reason": {
+          "en": "The URL combines banking and login terms.",
+          "hi": "यूआरएल में बैंकिंग और लॉगिन शब्द शामिल हैं।",
+          "bn": "ইউআরএল-এ ব্যাংকিং এবং লগইন শব্দ রয়েছে।"
+        }
+      },
+      {
+        "words": ["verify", "otp"],
+        "points": 25,
+        "name": "OTP verification pattern",
+        "reason": {
+          "en": "The URL contains both verification and OTP terms.",
+          "hi": "यूआरएल में सत्यापन और ओटीपी दोनों शब्द हैं।",
+          "bn": "ইউআরএল-এ ভেরিফিকেশন এবং ওটিপি শব্দ রয়েছে।"
+        }
+      },
+      {
+        "words": ["payment", "login"],
+        "points": 20,
+        "name": "Payment login pattern",
+        "reason": {
+          "en": "The URL combines payment and login terms.",
+          "hi": "यूआरएल में भुगतान और लॉगिन दोनों शब्द हैं।",
+          "bn": "ইউআরএল-এ পেমেন্ট এবং লগইন শব্দ রয়েছে।"
+        }
+      },
+      {
+        "words": ["kyc", "verify"],
+        "points": 22,
+        "name": "KYC verification pattern",
+        "reason": {
+          "en": "The URL combines KYC and verification terms.",
+          "hi": "यूआरएल में केवाईसी और सत्यापन दोनों शब्द हैं।",
+          "bn": "ইউআরএল-এ কেওয়াইসি এবং ভেরিফিকেশন শব্দ রয়েছে।"
+        }
+      }
+    ],
+    "lookalike_domains": [
+      "paypa1",
+      "g00gle",
+      "faceb00k",
+      "micros0ft",
+      "amaz0n",
+      "app1e",
+      "instagrarn",
+      "sb1",
+      "icic1"
+    ],
+    "suspicious_tlds": [
+      ".xyz",
+      ".top",
+      ".work",
+      ".club",
+      ".buzz",
+      ".fit",
+      ".surf",
+      ".tk",
+      ".ml",
+      ".cf",
+      ".gq",
+      ".ga",
+      ".click",
+      ".download",
+      ".link",
+      ".live",
+      ".guru",
+      ".rest"
+    ],
+    "url_shorteners": [
+      "bit.ly",
+      "tinyurl.com",
+      "t.co",
+      "cutt.ly",
+      "is.gd",
+      "rb.gy",
+      "shorturl.at",
+      "ow.ly",
+      "rebrand.ly",
+      "goo.gl"
+    ],
+    "legitimate_domains": [
+      "google.com",
+      "google.co.in",
+      "sbi.co.in",
+      "onlinesbi.sbi",
+      "onlinesbi.com",
+      "hdfcbank.com",
+      "icicibank.com",
+      "axisbank.com",
+      "pnbindia.in",
+      "amazon.in",
+      "amazon.com",
+      "flipkart.com",
+      "microsoft.com",
+      "apple.com",
+      "gov.in",
+      "nic.in",
+      "uidai.gov.in",
+      "incometax.gov.in",
+      "india.gov.in"
+    ]
+  },
+
+  "translations": {
+    "en": {
+      "app_title": "FraudsFilter",
+      "tagline": "Think before you click.",
+      "eyebrow_hero": "DIGITAL SAFETY ANALYZER",
+      "hero_title": "Understand suspicious messages\nbefore you act.",
+      "hero_desc": "Paste an SMS, email, WhatsApp message, job offer, payment request, or URL. FraudsFilter checks for common warning signs and explains them.",
+      "privacy_notice": "🔒 Everything is analyzed in your browser. Your messages are not uploaded to any server.",
+      "scan_title": "🔍 Scan Content",
+      "scan_desc": "Paste the suspicious content below.",
+      "try_sample": "Try Sample",
+      "input_placeholder": "Paste a suspicious SMS, email, WhatsApp message or URL here...",
+      "char_count": "{count} characters",
+      "analyze_btn": "Analyze",
+      "error_empty": "Please paste a message or URL first.",
+      "result_eyebrow": "ANALYSIS RESULT",
+      "result_complete": "Analysis Complete",
+      "risk_low": "LOW RISK",
+      "risk_medium": "MEDIUM RISK",
+      "risk_high": "HIGH RISK",
+      "confidence_low": "Low Confidence",
+      "confidence_medium": "Medium Confidence",
+      "confidence_high": "High Confidence",
+      "confidence_label": "Confidence",
+      "highlighted_title": "🔍 Highlighted Message",
+      "detected_indicators": "🚨 Detected Indicators",
+      "scam_patterns": "🧠 Scam Patterns",
+      "why_suspicious": "🔎 Why is this suspicious?",
+      "what_to_do": "🛡️ What should you do?",
+      "feedback_title": "💬 Was this correct?",
+      "feedback_correct": "✅ Correct Detection",
+      "feedback_false_positive": "⚠️ False Positive",
+      "feedback_missed": "❌ Missed Scam",
+      "feedback_notes_placeholder": "Optional note (e.g. why this was incorrect)...",
+      "feedback_submit": "Submit Feedback",
+      "feedback_saved": "Thank you! Feedback saved locally in your browser for review.",
+      "feedback_already": "Feedback already submitted for this analysis.",
+      "feedback_export": "Export Feedback Data (JSON)",
+      "copy_result": "📋 Copy Result",
+      "result_copied": "Result copied to clipboard!",
+      "share_result": "↗️ Share Result",
+      "share_title": "FraudsFilter Scam Assessment",
+      "share_fallback": "Share link copied to clipboard!",
+      "disclaimer_text": "Important: This prototype provides a risk assessment, not a guarantee that content is fraudulent or legitimate. Always verify important requests through an independent official channel."
+    },
+    "hi": {
+      "app_title": "FraudsFilter",
+      "tagline": "क्लिक करने से पहले सोचें।",
+      "eyebrow_hero": "डिजिटल सुरक्षा विश्लेषक",
+      "hero_title": "संदेहास्पद संदेशों को समझें,\nकार्रवाई करने से पहले।",
+      "hero_desc": "संदिग्ध एसएमएस, ईमेल, व्हाट्सएप संदेश, नौकरी का प्रस्ताव या लिंक पेस्ट करें। FraudsFilter चेतावनी के संकेतों की जांच करता है।",
+      "privacy_notice": "🔒 सब कुछ आपके ब्राउज़र में ही विश्लेषित होता है। आपका संदेश किसी भी सर्वर पर अपलोड नहीं होता।",
+      "scan_title": "🔍 सामग्री स्कैन करें",
+      "scan_desc": "नीचे संदिग्ध सामग्री पेस्ट करें।",
+      "try_sample": "नमूना देखें",
+      "input_placeholder": "संदिग्ध एसएमएस, ईमेल, व्हाट्सएप संदेश या यूआरएल यहाँ पेस्ट करें...",
+      "char_count": "{count} अक्षर",
+      "analyze_btn": "विश्लेषण करें",
+      "error_empty": "कृपया पहले कोई संदेश या यूआरएल पेस्ट करें।",
+      "result_eyebrow": "विश्लेषण परिणाम",
+      "result_complete": "विश्लेषण संपन्न",
+      "risk_low": "कम जोखिम (LOW RISK)",
+      "risk_medium": "मध्यम जोखिम (MEDIUM RISK)",
+      "risk_high": "उच्च जोखिम (HIGH RISK)",
+      "confidence_low": "कम आत्मविश्वास (Low Confidence)",
+      "confidence_medium": "मध्यम आत्मविश्वास (Medium Confidence)",
+      "confidence_high": "उच्च आत्मविश्वास (High Confidence)",
+      "confidence_label": "आत्मविश्वास",
+      "highlighted_title": "🔍 हाइलाइट किया गया संदेश",
+      "detected_indicators": "🚨 पहचाने गए संकेतक",
+      "scam_patterns": "🧠 स्कैम पैटर्न",
+      "why_suspicious": "🔎 यह संदिग्ध क्यों है?",
+      "what_to_do": "🛡️ आपको क्या करना चाहिए?",
+      "feedback_title": "💬 क्या यह परिणाम सही था?",
+      "feedback_correct": "✅ सही पहचान",
+      "feedback_false_positive": "⚠️ गलत चेतावनी (False Positive)",
+      "feedback_missed": "❌ छूटा हुआ स्कैम (Missed Scam)",
+      "feedback_notes_placeholder": "वैकल्पिक टिप्पणी...",
+      "feedback_submit": "प्रतिक्रिया भेजें",
+      "feedback_saved": "धन्यवाद! प्रतिक्रिया आपके ब्राउज़र में स्थानीय रूप से सहेज ली गई है।",
+      "feedback_already": "इस परिणाम के लिए प्रतिक्रिया पहले ही दर्ज की जा चुकी है।",
+      "feedback_export": "प्रतिक्रिया डेटा डाउनलोड करें (JSON)",
+      "copy_result": "📋 परिणाम कॉपी करें",
+      "result_copied": "परिणाम क्लिपबोर्ड पर कॉपी हो गया!",
+      "share_result": "↗️ परिणाम साझा करें",
+      "share_title": "FraudsFilter स्कैम विश्लेषण",
+      "share_fallback": "साझा करने का टेक्स्ट क्लिपबोर्ड में कॉपी हो गया!",
+      "disclaimer_text": "महत्वपूर्ण: यह केवल एक जोखिम मूल्यांकन प्रदान करता है, कोई अंतिम कानूनी गारंटी नहीं। किसी भी महत्वपूर्ण अनुरोध को हमेशा आधिकारिक चैनल से सत्यापित करें।"
+    },
+    "bn": {
+      "app_title": "FraudsFilter",
+      "tagline": "ক্লিক করার আগে ভাবুন।",
+      "eyebrow_hero": "ডিজিটাল সুরক্ষা বিশ্লেষক",
+      "hero_title": "সন্দেহজনক বার্তা বুঝুন,\nপদক্ষেপ নেওয়ার আগে।",
+      "hero_desc": "সন্দেহজনক এসএমএস, ইমেল, হোয়াটসঅ্যাপ বার্তা, চাকরির প্রস্তাব বা লিঙ্ক পেস্ট করুন। FraudsFilter সাধারণ সতর্কবার্তাগুলি বিশ্লেষণ করে।",
+      "privacy_notice": "🔒 সবকিছু আপনার ব্রাউজারে বিশ্লেষণ করা হয়। আপনার বার্তা কোনো সার্ভারে আপলোড করা হয় না।",
+      "scan_title": "🔍 বিষয়বস্তু স্ক্যান করুন",
+      "scan_desc": "নিচে সন্দেহজনক বার্তা বা লিঙ্ক পেস্ট করুন।",
+      "try_sample": "নমুনা দেখুন",
+      "input_placeholder": "সন্দেহজনক এসএমএস, ইমেল, হোয়াটসঅ্যাপ বার্তা বা ইউআরএল এখানে পেস্ট করুন...",
+      "char_count": "{count} টি অক্ষর",
+      "analyze_btn": "বিশ্লেষণ করুন",
+      "error_empty": "অনুগ্রহ করে প্রথমে একটি বার্তা বা ইউআরএল পেস্ট করুন।",
+      "result_eyebrow": "বিশ্লেষণের ফলাফল",
+      "result_complete": "বিশ্লেষণ সম্পন্ন",
+      "risk_low": "কম ঝুঁকি (LOW RISK)",
+      "risk_medium": "মাঝারি ঝুঁকি (MEDIUM RISK)",
+      "risk_high": "উচ্চ ঝুঁকি (HIGH RISK)",
+      "confidence_low": "কম আত্মবিশ্বাস (Low Confidence)",
+      "confidence_medium": "মাঝারি আত্মবিশ্বাস (Medium Confidence)",
+      "confidence_high": "উচ্চ আত্মবিশ্বাস (High Confidence)",
+      "confidence_label": "কনফিডেন্স",
+      "highlighted_title": "🔍 হাইলাইট করা বার্তা",
+      "detected_indicators": "🚨 চিহ্নিত সতর্কবার্তা",
+      "scam_patterns": "🧠 স্ক্যাম প্যাটার্ন",
+      "why_suspicious": "🔎 এটি কেন সন্দেহজনক?",
+      "what_to_do": "🛡️ আপনার কী করা উচিত?",
+      "feedback_title": "💬 এই ফলাফলটি কি সঠিক ছিল?",
+      "feedback_correct": "✅ সঠিক সনাক্তকরণ",
+      "feedback_false_positive": "⚠️ ভুল সতর্কতা (False Positive)",
+      "feedback_missed": "❌ মিস হওয়া প্রতারণা (Missed Scam)",
+      "feedback_notes_placeholder": "ঐচ্ছিক মন্তব্য...",
+      "feedback_submit": "মতামত জমা দিন",
+      "feedback_saved": "ধন্যবাদ! আপনার প্রতিক্রিয়া ব্রাউজারে স্থানীয়ভাবে সংরক্ষিত হয়েছে।",
+      "feedback_already": "এই বিশ্লেষণের জন্য প্রতিক্রিয়া ইতিমধ্যে জমা দেওয়া হয়েছে।",
+      "feedback_export": "ফিডব্যাক ডেটা ডাউনলোড করুন (JSON)",
+      "copy_result": "📋 ফলাফল কপি করুন",
+      "result_copied": "ফলাফল ক্লিপবোর্ডে কপি করা হয়েছে!",
+      "share_result": "↗️ শেয়ার করুন",
+      "share_title": "FraudsFilter স্ক্যাম বিশ্লেষণ",
+      "share_fallback": "শেয়ার লিংক ক্লিপবোর্ডে কপি করা হয়েছে!",
+      "disclaimer_text": "গুরুত্বপূর্ণ: এটি কেবল একটি ঝুঁকি মূল্যায়ন প্রদান করে, সামগ্রীটি বৈধ বা প্রতারণামূলক হওয়ার কোনো চূড়ান্ত গ্যারান্টি নয়। অফিসিয়াল মাধ্যমে যাচাই করুন।"
+    }
+  }
+}
