@@ -1312,3 +1312,548 @@ footer {
     font-size: 10px;
   }
 }
+
+/* ==========================================
+   VOICE CALL ANALYZER STYLES
+========================================== */
+
+.voice-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, .85fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.voice-card {
+  background: white;
+  border: 1px solid #e9e5ef;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 35px #23163a0b;
+}
+
+.voice-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 10px;
+}
+
+.voice-card-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.voice-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #f2eaff;
+  color: #8842cf;
+  font-size: 24px;
+}
+
+.voice-card-heading h3 {
+  font-size: 14px;
+  color: #211b2c;
+}
+
+.voice-card-heading p {
+  color: #8b8493;
+  font-size: 10px;
+}
+
+/* DROPZONE */
+
+.audio-dropzone {
+  border: 2px dashed #cfb9ec;
+  border-radius: 14px;
+  padding: 34px 20px;
+  text-align: center;
+  background: #faf8fc;
+  transition: all .2s ease;
+}
+
+.audio-dropzone:hover,
+.audio-dropzone.drag-active {
+  border-color: #a855f7;
+  background: #f5edff;
+  box-shadow: 0 0 0 4px #a855f718;
+}
+
+.dropzone-icon {
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+
+.audio-dropzone h4 {
+  font-size: 14px;
+  color: #231c2d;
+  margin-bottom: 4px;
+}
+
+.audio-dropzone p {
+  font-size: 11px;
+  color: #888191;
+  margin-bottom: 16px;
+}
+
+.dropzone-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.record-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.record-toggle-btn.recording {
+  background: #ffe5ea;
+  border-color: #ef536d;
+  color: #b4233d;
+  animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 83, 109, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(239, 83, 109, 0); }
+}
+
+.record-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: #b4233d;
+  font-weight: 700;
+}
+
+.pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ef536d;
+  display: inline-block;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 0.4; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1.15); }
+}
+
+/* AUDIO PLAYER & WAVEFORM */
+
+.voice-player-container {
+  background: #fbf9fd;
+  border: 1px solid #ebdff5;
+  border-radius: 13px;
+  padding: 18px;
+  margin-top: 20px;
+}
+
+.audio-file-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.meta-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meta-left .file-icon {
+  font-size: 22px;
+}
+
+.meta-left b {
+  font-size: 12px;
+  color: #211c2e;
+  display: block;
+}
+
+.meta-left small {
+  font-size: 9px;
+  color: #928b9a;
+}
+
+.audio-badge {
+  font-size: 9px;
+  font-weight: 800;
+  background: #eef2ff;
+  color: #4338ca;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+.waveform-canvas {
+  width: 100%;
+  height: 60px;
+  background: #171221;
+  border-radius: 8px;
+  display: block;
+  margin: 10px 0 14px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.play-btn {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a855f7, #7e22ce);
+  border: none;
+  color: white;
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+  transition: transform .15s ease, box-shadow .2s ease;
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
+}
+
+.play-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.45);
+}
+
+.time-label {
+  font-size: 11px;
+  color: #6d6577;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-width: 32px;
+}
+
+.timeline-slider {
+  flex: 1;
+  accent-color: #a855f7;
+  cursor: pointer;
+  height: 5px;
+}
+
+.transcribe-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.transcribe-btn {
+  flex: 1 1 220px;
+  padding: 12px 18px;
+  font-size: 12px;
+}
+
+.transcribe-btn.extracting {
+  background: #ffe5ea;
+  border-color: #ef536d;
+  color: #b4233d;
+  animation: pulseGlow 1.5s infinite;
+}
+
+.live-mic-btn {
+  padding: 12px 16px;
+  font-size: 11px;
+}
+
+.live-mic-btn.recording {
+  background: #ffe5ea;
+  border-color: #ef536d;
+  color: #b4233d;
+  animation: pulseGlow 1.5s infinite;
+}
+
+.transcribe-progress {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #f5edff;
+  border-radius: 9px;
+  border: 1px solid #ebd9fc;
+}
+
+.progress-bar-track {
+  height: 6px;
+  background: #e4d1f9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  transition: width .3s ease;
+}
+
+.progress-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+#transcribeStatusText {
+  font-size: 10px;
+  color: #6b21a8;
+  font-weight: 600;
+}
+
+#transcribePercentText {
+  font-size: 10px;
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+.inline-error.inline-success {
+  background: #eefcf4;
+  border-color: #c1ead4;
+  color: #16835b;
+}
+
+/* TRANSCRIPT CONTAINER */
+
+.transcript-container {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #ede8f4;
+}
+
+.transcript-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.transcript-heading label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #272132;
+}
+
+.transcript-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.word-counter {
+  font-size: 10px;
+  color: #8c8594;
+}
+
+.mini-btn {
+  background: #f4eefe;
+  border: 1px solid #dfcff5;
+  color: #7241a8;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  transition: .15s;
+}
+
+.mini-btn:hover {
+  background: #ebdcfb;
+}
+
+.transcript-container textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  border: 1px solid #e3dce9;
+  border-radius: 11px;
+  padding: 14px;
+  background: #faf9fc;
+  color: #272235;
+  font-size: 12px;
+  line-height: 1.7;
+  outline: none;
+}
+
+.transcript-container textarea:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px #a855f718;
+}
+
+.analyze-call-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.analyze-call-btn {
+  padding: 13px 20px;
+  font-size: 12px;
+}
+
+/* VISHING GUIDE CARD */
+
+.vishing-guide-card {
+  background: #fff8f0;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 18px;
+}
+
+.vishing-guide-card h4 {
+  font-size: 12px;
+  color: #c2410c;
+  margin-bottom: 8px;
+}
+
+.vishing-guide-card ul {
+  padding-left: 17px;
+  color: #9a3412;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.vishing-guide-card li {
+  margin: 4px 0;
+}
+
+/* CALL VERDICT BANNER IN RESULT VIEW */
+
+.call-verdict-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+
+.call-verdict-banner.high {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #9f1239;
+}
+
+.call-verdict-banner.medium {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+
+.call-verdict-banner.low {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+.call-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.call-banner-icon {
+  font-size: 28px;
+}
+
+.call-banner-left h4 {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.call-banner-left p {
+  font-size: 11px;
+  margin-top: 2px;
+  opacity: 0.9;
+}
+
+.call-vishing-pill {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.call-vishing-pill.high {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.call-vishing-pill.medium {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+
+.call-vishing-pill.low {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+/* VISHING RED FLAGS LIST */
+
+.vishing-flags-section {
+  background: #fff8f8;
+  border: 1px solid #fed7d7;
+}
+
+.vishing-flags-section h4 {
+  color: #c53030;
+}
+
+.vishing-flags-list {
+  padding-left: 20px;
+  color: #9b2c2c;
+  font-size: 11px;
+}
+
+.vishing-flags-list li {
+  margin: 6px 0;
+}
+
+/* HISTORY VOICE PILL */
+
+.history-voice-pill {
+  display: inline-block;
+  background: #ede9fe;
+  color: #6d28d9;
+  border: 1px solid #ddd6fe;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+  .voice-layout {
+    grid-template-columns: 1fr;
+  }
+}
+

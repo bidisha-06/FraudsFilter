@@ -168,6 +168,14 @@ export class UIController {
         this.submitFeedbackBtn = document.getElementById("submitFeedbackBtn");
         this.exportFeedbackBtn = document.getElementById("exportFeedbackBtn");
         this.feedbackStatus = document.getElementById("feedbackStatus");
+
+        this.callVerdictBanner = document.getElementById("callVerdictBanner");
+        this.callVerdictTitle = document.getElementById("callVerdictTitle");
+        this.callVerdictSubtitle = document.getElementById("callVerdictSubtitle");
+        this.callBannerIcon = document.getElementById("callBannerIcon");
+        this.callVishingPill = document.getElementById("callVishingPill");
+        this.vishingFlagsSection = document.getElementById("vishingFlagsSection");
+        this.vishingFlagsList = document.getElementById("vishingFlagsList");
     }
 
     /**
@@ -313,6 +321,49 @@ export class UIController {
                 this.scoreCircle.style.borderColor = "var(--orange)";
             } else {
                 this.scoreCircle.style.borderColor = "var(--green)";
+            }
+        }
+
+        // Call-specific verdict banner
+        if (this.callVerdictBanner) {
+            if (result.isCallAnalysis) {
+                this.callVerdictBanner.classList.remove("hidden");
+                const riskClass = (result.risk || "LOW").toLowerCase();
+                this.callVerdictBanner.className = `call-verdict-banner ${riskClass}`;
+
+                if (this.callVerdictTitle) {
+                    this.callVerdictTitle.textContent = result.callVerdict || "CALL ANALYSIS";
+                }
+                if (this.callVerdictSubtitle) {
+                    const dur = result.callDuration ? ` (${result.callDuration})` : "";
+                    this.callVerdictSubtitle.textContent = `Call Type: ${result.callType || "Routine Call"}${dur}`;
+                }
+                if (this.callBannerIcon) {
+                    this.callBannerIcon.textContent = result.risk === "HIGH" ? "🚨" : result.risk === "MEDIUM" ? "⚠️" : "✅";
+                }
+                if (this.callVishingPill) {
+                    this.callVishingPill.className = `call-vishing-pill ${riskClass}`;
+                    this.callVishingPill.textContent = result.risk === "HIGH" ? "VISHING THREAT DETECTED" : result.risk === "MEDIUM" ? "SUSPICIOUS CALL" : "LEGITIMATE ROUTINE CALL";
+                }
+            } else {
+                this.callVerdictBanner.classList.add("hidden");
+            }
+        }
+
+        // Vishing Red Flags List
+        if (this.vishingFlagsSection) {
+            if (result.isCallAnalysis && result.vishingRedFlags && result.vishingRedFlags.length > 0) {
+                this.vishingFlagsSection.classList.remove("hidden");
+                if (this.vishingFlagsList) {
+                    this.vishingFlagsList.innerHTML = "";
+                    result.vishingRedFlags.forEach(flag => {
+                        const li = document.createElement("li");
+                        li.textContent = flag;
+                        this.vishingFlagsList.appendChild(li);
+                    });
+                }
+            } else {
+                this.vishingFlagsSection.classList.add("hidden");
             }
         }
 

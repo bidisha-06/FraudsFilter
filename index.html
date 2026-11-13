@@ -55,6 +55,9 @@
             <button class="primary-btn" id="heroStart">
               Start Protecting Yourself →
             </button>
+            <button class="secondary-btn" id="heroVoiceStart">
+              🎙️ Voice Call Analyzer
+            </button>
             <a href="#features" class="secondary-btn">
               Explore Features
             </a>
@@ -81,6 +84,12 @@
         </div>
 
         <div class="feature-grid">
+          <article class="feature-card voice-feature-card">
+            <span>🎙️</span>
+            <h3>Voice Call Analyzer</h3>
+            <p>Upload call recordings to transcribe speech into text via in-browser Whisper AI and detect vishing, digital arrest, and scam calls.</p>
+          </article>
+
           <article class="feature-card">
             <span>🔍</span>
             <h3>URL Detection</h3>
@@ -165,6 +174,10 @@
 
         <button class="sidebar-link active" data-view="scanner">
           <span>▦</span> Dashboard
+        </button>
+
+        <button class="sidebar-link" data-view="voice">
+          <span>🎙</span> Voice Analyzer
         </button>
 
         <button class="sidebar-link" data-view="history">
@@ -326,6 +339,201 @@
         </section>
 
 
+        <!-- VOICE ANALYZER VIEW -->
+        <section class="dashboard-view hidden" id="voiceView">
+
+          <div class="welcome-row">
+            <div>
+              <span class="eyebrow">VOICE & CALL FRAUD DETECTION</span>
+              <h2>Analyse Call <span>Recordings.</span></h2>
+              <p>
+                Upload a phone call recording or record live audio. FraudsFilter converts
+                the speech into text and detects vishing, digital arrest, and scam threats.
+              </p>
+            </div>
+          </div>
+
+          <div class="voice-layout">
+
+            <!-- VOICE UPLOAD & CONTROLS -->
+            <section class="voice-card">
+
+              <div class="voice-card-heading">
+                <div>
+                  <span class="voice-icon">🎙</span>
+                  <div>
+                    <h3>Call Recording Transcriber</h3>
+                    <p>Upload an audio file or record incoming call audio.</p>
+                  </div>
+                </div>
+
+                <span class="live-badge">● AUDIO READY</span>
+              </div>
+
+              <!-- DROPZONE -->
+              <div class="audio-dropzone" id="audioDropzone">
+                <input type="file" id="audioFileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.webm,.aac,.flac" class="hidden">
+                <div class="dropzone-icon">📁</div>
+                <h4>Drag & Drop Call Recording Here</h4>
+                <p>Supports MP3, WAV, M4A, OGG, WEBM (up to 50MB)</p>
+
+                <div class="dropzone-actions">
+                  <button type="button" class="primary-btn" id="audioBrowseBtn">
+                    Browse Audio File
+                  </button>
+                  <button type="button" class="secondary-btn record-toggle-btn" id="audioRecordBtn">
+                    <span>🎙️ Record Live Call</span>
+                  </button>
+                </div>
+
+                <div id="recordStatus" class="record-status hidden">
+                  <span class="pulse-dot"></span>
+                  <span>Recording live audio...</span>
+                  <b id="recordTimer">0:00</b>
+                </div>
+              </div>
+
+              <!-- AUDIO PLAYER & WAVEFORM -->
+              <div id="voicePlayerContainer" class="voice-player-container hidden">
+                <div class="audio-file-meta">
+                  <div class="meta-left">
+                    <span class="file-icon">🎵</span>
+                    <div>
+                      <b id="voiceFileName">call_recording.wav</b>
+                      <small id="voiceFileSize">0 KB</small>
+                    </div>
+                  </div>
+                  <span class="audio-badge">AUDIO LOADED</span>
+                </div>
+
+                <canvas id="voiceWaveform" class="waveform-canvas" width="600" height="60"></canvas>
+
+                <div class="player-controls">
+                  <button type="button" id="voicePlayPauseBtn" class="play-btn" title="Play/Pause">
+                    <span id="voicePlayIcon">▶</span>
+                  </button>
+                  <span id="voiceCurrentTime" class="time-label">0:00</span>
+                  <input type="range" id="voiceTimeline" class="timeline-slider" min="0" max="100" value="0">
+                  <span id="voiceDuration" class="time-label">0:00</span>
+                </div>
+
+                <div class="transcribe-actions">
+                  <button type="button" id="transcribeBtn" class="primary-btn transcribe-btn">
+                    <span>⚡ Extract Speech to Text (In-Browser Whisper AI)</span>
+                  </button>
+                  <button type="button" id="liveMicBtn" class="secondary-btn live-mic-btn" title="Speak or hold phone near microphone to extract text">
+                    <span>🎙️ Live Speak / Dictate</span>
+                  </button>
+                </div>
+
+                <div id="transcribeProgress" class="transcribe-progress hidden">
+                  <div class="progress-bar-track">
+                    <div id="transcribeProgressBar" class="progress-bar-fill"></div>
+                  </div>
+                  <div class="progress-info-row">
+                    <span id="transcribeStatusText">Extracting speech into text via in-browser Whisper AI...</span>
+                    <span id="transcribePercentText">0%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TRANSCRIPT CONTAINER -->
+              <div id="transcriptContainer" class="transcript-container hidden">
+                <div class="transcript-heading">
+                  <label for="transcriptTextarea">Transcribed Call Speech</label>
+                  <div class="transcript-actions-row">
+                    <span id="transcriptWordCount" class="word-counter">0 words</span>
+                    <button type="button" id="copyTranscriptBtn" class="mini-btn">Copy</button>
+                    <button type="button" id="clearTranscriptBtn" class="mini-btn">Clear</button>
+                  </div>
+                </div>
+
+                <textarea
+                  id="transcriptTextarea"
+                  placeholder="The converted speech from your call will appear here. You can review or edit it before analysis..."
+                  rows="5"
+                ></textarea>
+
+                <div id="voiceInlineError" class="inline-error hidden" role="alert"></div>
+
+                <div class="analyze-call-action">
+                  <button type="button" id="analyzeCallBtn" class="primary-btn analyze-call-btn">
+                    Analyse Call Scam Risk →
+                  </button>
+                </div>
+
+                <div class="privacy-note">
+                  🔒 Pure in-browser AI transcription (OpenAI Whisper via Transformers.js). No audio or data leaves your device.
+                </div>
+              </div>
+
+            </section>
+
+
+            <!-- SAMPLE CALLS PANEL -->
+            <aside class="sample-panel voice-sample-panel">
+
+              <div class="sample-heading">
+                <span class="eyebrow">TEST CALL SCENARIOS</span>
+                <h3>Sample Call Recordings</h3>
+                <p>Select any realistic call scenario to test immediately.</p>
+              </div>
+
+              <button class="sample-link high-sample voice-sample-btn" data-sample-id="cbi_scam" type="button">
+                <span class="risk-dot"></span>
+                <span class="sample-info">
+                  <b>CBI & Customs Digital Arrest</b>
+                  <small>Parcel seized with narcotics threat</small>
+                  <code>Fake Police / CBI Impersonation (0:24)</code>
+                </span>
+                <span class="sample-arrow">→</span>
+              </button>
+
+              <button class="sample-link high-sample voice-sample-btn" data-sample-id="kyc_scam" type="button">
+                <span class="risk-dot"></span>
+                <span class="sample-info">
+                  <b>Bank KYC & Debit Card Block</b>
+                  <small>Immediate suspension demanding OTP</small>
+                  <code>SBI Card Division Vishing (0:18)</code>
+                </span>
+                <span class="sample-arrow">→</span>
+              </button>
+
+              <button class="sample-link low-sample voice-sample-btn" data-sample-id="clinic_legit" type="button">
+                <span class="risk-dot"></span>
+                <span class="sample-info">
+                  <b>Clinic Appointment Reminder</b>
+                  <small>Routine dental confirmation</small>
+                  <code>Legitimate Service Call (0:14)</code>
+                </span>
+                <span class="sample-arrow">→</span>
+              </button>
+
+              <div class="sample-tip">
+                <span>💡</span>
+                <p>
+                  Sample calls include real generated audio and transcripts.
+                  Select any sample to load audio, play back, and view scam analysis.
+                </p>
+              </div>
+
+              <!-- VISHING RED FLAGS GUIDE CARD -->
+              <div class="vishing-guide-card">
+                <h4>🚨 Phone Scam Red Flags</h4>
+                <ul>
+                  <li><b>Demanding OTP / PIN:</b> Banks never ask for OTPs over a call.</li>
+                  <li><b>Digital Arrest:</b> No law allows arrest via phone or video call.</li>
+                  <li><b>Screen Sharing:</b> Never install AnyDesk/TeamViewer for callers.</li>
+                  <li><b>Call Pressure:</b> Scammers demand that you do not disconnect.</li>
+                </ul>
+              </div>
+
+            </aside>
+
+          </div>
+        </section>
+
+
         <!-- RESULT VIEW -->
         <section class="dashboard-view hidden" id="resultView">
 
@@ -361,6 +569,18 @@
               </div>
             </div>
 
+            <!-- VOICE CALL VERDICT BANNER -->
+            <div id="callVerdictBanner" class="call-verdict-banner hidden">
+              <div class="call-banner-left">
+                <span class="call-banner-icon" id="callBannerIcon">📞</span>
+                <div>
+                  <h4 id="callVerdictTitle">SCAM CALL DETECTED</h4>
+                  <p id="callVerdictSubtitle">Call Type: Digital Arrest Impersonation</p>
+                </div>
+              </div>
+              <span class="call-vishing-pill" id="callVishingPill">VISHING THREAT</span>
+            </div>
+
             <section class="result-section" id="highlightedSection">
               <h4 id="highlightedTitle">Analysed Content</h4>
               <div class="highlighted-content" id="highlightedContent"></div>
@@ -379,6 +599,12 @@
               </section>
 
             </div>
+
+            <!-- VISHING RED FLAGS SECTION -->
+            <section class="result-section vishing-flags-section hidden" id="vishingFlagsSection">
+              <h4>🚨 Detected Vishing Red Flags & Pressure Tactics</h4>
+              <ul id="vishingFlagsList" class="vishing-flags-list"></ul>
+            </section>
 
             <section class="result-section explanation">
               <h4>Why Was This Result Generated?</h4>
