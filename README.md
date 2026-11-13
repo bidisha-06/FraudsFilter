@@ -1,23 +1,65 @@
 # 🛡️ FraudsFilter
+### Smart Fraud & Suspicious Link Detection Platform
 
-### Digital Safety Analyzer & Suspicious Message Detection System
+FraudsFilter is a web-based fraud detection platform designed to help users identify potentially fraudulent URLs and suspicious online activities. It provides a simple interface where users can submit links for analysis, understand potential security risks, and make safer decisions before interacting with unknown websites.
 
-## 🚀 Project Overview
+The platform aims to make online safety awareness easier through URL analysis, risk assessment, and review history.
 
-**FraudsFilter** is an open-source, client-side digital safety web application designed to help users identify, analyze, and recognize potentially fraudulent or suspicious messages, links, and scams before taking action.
+---
 
-Paste an SMS, email, WhatsApp message, job offer, UPI payment request, or URL. FraudsFilter evaluates the content against heuristic scam patterns, domain spoofing techniques, and social-engineering triggers, providing clear, explainable, and confidence-based risk assessments.
+## 🚀 Key Features
 
-> 🔒 **Privacy Guarantee:** All analysis executes 100% locally inside your web browser. No messages, URLs, or personal data are ever uploaded, transmitted, or stored on external servers.
+### 1. Landing Page
+- Professional landing page introducing FraudsFilter.
+- Clear overview of the platform and its purpose.
+- Get Started option to access the main application.
+
+### 2. User Dashboard
+- Centralized dashboard for accessing the platform's features.
+- Sidebar navigation for easy movement between sections.
+- Organized interface for URL scanning and reviewing previous results.
+
+### 3. URL Scanner
+- Enter or paste a URL for security analysis.
+- Submit suspicious links for risk assessment.
+- Simple and user-friendly scanning interface.
+
+### 4. Separate Analysis Result Page
+- Displays the analysis result in a separate view after URL submission.
+- Presents the detected risk level.
+- Provides relevant information to help users understand the result.
+
+### 5. Risk-Level Sample URLs
+Includes sample URLs to help users understand and test the scanner:
+
+| Risk Level | Purpose |
+|---|---|
+| 🔴 High Risk | Example of a potentially dangerous or suspicious URL |
+| 🟠 Medium Risk | Example of a URL requiring additional verification |
+| 🟢 Low Risk | Example of a commonly trusted website |
+
+*Note: Sample URLs are provided for demonstration and testing. Actual risk classifications depend on the detection engine.*
+
+### 6. Review History
+- Maintains a record of previous URL reviews.
+- Allows users to revisit earlier analysis results.
+- Helps users keep track of scanned URLs.
+
+### 7. Safety Guide
+- Provides basic online security awareness.
+- Highlights precautions to take before opening unknown links.
+- Encourages users to identify suspicious online activities.
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **HTML5** – Semantic markup and accessible UI components.
-- **CSS3** – Responsive styling, modular layout, custom badge indicators, and highlight mark tags.
-- **JavaScript (ES Modules)** – Modular frontend architecture, regex boundary pattern matching, and domain parsing.
-- **Vitest** – Automated unit testing suite verifying detection logic, boundary conditions, and sanitization.
+| Technology | Purpose |
+|---|---|
+| HTML5 | Website structure |
+| CSS3 | Styling and responsive layout |
+| JavaScript | Application functionality and interactions |
+| Local Storage | Storing review history in the browser |
 
 ---
 
@@ -26,133 +68,124 @@ Paste an SMS, email, WhatsApp message, job offer, UPI payment request, or URL. F
 ```text
 FraudsFilter/
 │
-├── index.html                  # Main application HTML interface
-├── style.css                   # Main application stylesheet and responsive styles
-├── script.js                   # Application entry point & event wiring
+├── index.html
+├── style.css
+├── script.js
 │
-├── rules.json                  # Centralized detection rules, categories, and translations
-├── rules.js                    # Rule loader, category manager, and translation helpers
-├── url.js                      # URL extraction, domain parsing, and domain-based analysis
-├── scoring.js                  # Signal detection, confidence calculation, and risk scoring
-├── ui.js                       # DOM manipulation, highlighting, feedback, and sharing
+├── scoring.js
+├── rules.js
+├── rules.json
+├── url.js
+├── ui.js
 │
-├── tests/                      # Automated unit test suite
-│   ├── detection.test.js       # Core detection, word-boundary, India-specific, Hinglish & Bengali tests
-│   └── ui.test.js              # XSS sanitization, safe highlighting, and recommendation tests
+├── assets/
+│   ├── images/
+│   └── icons/
 │
-├── package.json                # Project metadata, scripts, and dev dependencies (Vitest)
-└── README.md                   # Project documentation
+└── README.md
 ```
+
+*The folder structure may vary depending on the existing project configuration. Retain any additional files required by the application.*
 
 ---
 
-## 🚦 Getting Started & Execution
+## ⚙️ Getting Started
 
-### 1. Clone or Download the Repository
+Follow these steps to run FraudsFilter locally.
 
-Clone this repository to your local machine:
+### Prerequisites
+- A modern web browser.
+- Visual Studio Code (recommended).
+- Live Server extension (recommended).
+
+### Installation
+
+**Step 1: Clone the repository**
 
 ```bash
-git clone https://github.com/bidisha-06/FraudsFilter.git
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+**Step 2: Open the project folder**
+
+```bash
 cd FraudsFilter
 ```
 
-Or download and extract the ZIP file directly.
-
-### 2. Install Development Dependencies (Optional, for Unit Tests)
-
-FraudsFilter runs in any modern browser without requiring dependencies. To run the automated unit test suite:
+**Step 3: Open in Visual Studio Code**
 
 ```bash
-npm install
+code .
 ```
 
-### 3. Launch the Application
+**Step 4: Run the application**
 
-#### Option A: Run with VS Code Live Server (Recommended)
-1. Open the `FraudsFilter` directory in Visual Studio Code.
-2. Install the **Live Server** extension (by Ritwick Dey).
-3. Right-click `index.html` and choose **Open with Live Server**.
+Open `index.html` using the Live Server extension in VS Code.
 
-#### Option B: Local HTTP Server
-Using Python:
-```bash
-# Python 3
-python -m http.server 8000
-```
-Then visit `http://localhost:8000` in your web browser.
-
-#### Option C: Direct Browser Open
-Double-click `index.html` to open it directly in Google Chrome, Microsoft Edge, Mozilla Firefox, or Safari.
+Alternatively, open the HTML file directly in your browser if the project does not require a local development server.
 
 ---
 
-## 🧪 Running Unit Tests
+## 🔄 How It Works
 
-FraudsFilter includes a test suite covering keyword detection, word-boundary protection, Hinglish/Bengali patterns, URL extraction, and security sanitization.
-
-Run the tests using Vitest:
-
-```bash
-npm test
-```
-
-To run tests in interactive watch mode:
-
-```bash
-npm run test:watch
-```
+1. Open the FraudsFilter landing page.
+2. Click **Get Started** to enter the dashboard.
+3. Navigate to the URL Scanner section.
+4. Paste the URL you want to review.
+5. Click the scan or analyze button.
+6. View the analysis result on the separate result page.
+7. Check the risk level and review the available information.
+8. Visit Review History to access previous scans.
 
 ---
 
-## 🌟 Key Features
+## 🎯 Project Objectives
 
-1. **Confidence-Based Assessments**
-   - Eliminates misleading mathematical scores (such as `73/100`) in favor of clear confidence ratings (**Low Confidence**, **Medium Confidence**, **High Confidence**).
-   - Accompanying plain-language explanations clarify *why* a given confidence rating was determined.
+- Promote safer internet browsing.
+- Help users recognize potentially fraudulent links.
+- Provide an accessible platform for URL risk assessment.
+- Improve awareness of suspicious online activities.
+- Present analysis results in a clear and understandable format.
 
-2. **In-Message Content Highlighting**
-   - Highlights detected suspicious words, deceptive phrases, and URLs directly in the analyzed message.
-   - Shows badge tags indicating which scam category triggered each highlight without altering original text.
-   - Built with strict HTML entity escaping to eliminate XSS risks.
+---
 
-3. **India-Specific & Regional Scam Patterns**
-   - **UPI & Payment Fraud:** Detects "enter UPI PIN to receive money", advance fees, and QR code scams.
-   - **Electricity Bill Fraud:** Identifies threats of immediate power disconnection ("tonight 9:30 PM").
-   - **Courier & Customs Impersonation:** Flags fake FedEx/customs parcel seizure and "digital arrest" scams.
-   - **KYC & Banking Threats:** Detects fake SBI/YONO/PAN/Aadhaar expired alerts and account block threats.
-   - **Multilingual Support:** Evaluates English, Hinglish ("khata band", "turant sampark kare"), and Bengali ("biddut line kete dewa hobe", "taka pete upi pin din").
+## 🔐 Security Notice
 
-4. **Advanced URL & Domain Security Analysis**
-   - Centralized rule definitions with deduplicated rules.
-   - Extracts URLs with or without protocols (`http://`, `https://`, `www.`, naked domains, shorteners).
-   - Flags direct IP address links (`192.168.1.1`), look-alike typosquatting domains (`paypa1`, `g00gle`), brand-spoofing subdomains (`sbi.co.in.fake-portal.com`), and risky TLDs (`.xyz`, `.top`).
-   - Protects legitimate official domains (`support.google.com`, `onlinesbi.sbi`) from false-positive keyword flagging.
+FraudsFilter is intended as an assistance tool for identifying potentially suspicious URLs. Its results should not be treated as a guarantee that a website is safe or malicious.
 
-5. **User Feedback & Data Collection**
-   - "Was this correct?" feedback system with options for **Correct Detection**, **False Positive**, and **Missed Scam**.
-   - Locally records feedback with timestamps and detected signals for future model training datasets.
-   - Built-in **Export Feedback (JSON)** feature.
+- Never share passwords, OTPs, banking details, or other sensitive information with untrusted websites.
+- Verify website domains before entering personal information.
+- Avoid clicking unfamiliar or suspicious links.
+- A low-risk result does not guarantee complete website safety.
 
-6. **Sharing, Copying & Inline Error Handling**
-   - Replaced browser `alert()` popups with inline, accessible UI notification banners.
-   - **Copy Result** button copies a formatted summary to clipboard.
-   - **Share Result** utilizes the Web Share API on mobile/supported browsers with automatic clipboard fallback.
+---
 
-7. **Multilingual Interface Switcher**
-   - One-click toggle between **English**, **Hinglish**, and **বাংলা (Bengali)** for UI headings, reasons, recommendations, and feedback options.
+## 🚧 Future Enhancements
+
+- Integration with advanced phishing and fraud detection APIs.
+- Real-time threat intelligence.
+- Improved URL reputation analysis.
+- User authentication and personalized dashboards.
+- Cloud-based review history.
+- Detailed security reports and analytics.
+- Enhanced detection using machine learning.
 
 ---
 
 ## 👥 Contributors
 
-Developed collaboratively as an academic digital safety and cybersecurity project.
+**FraudsFilter Development Team**
 
-## 📄 License
-
-This project is developed for educational and academic purposes.
+Developed as a project to promote digital security awareness and help users make informed decisions when interacting with online links.
 
 ---
 
-### Built with ❤️ by the FraudsFilter Team
-*Promoting safer and smarter digital interactions.*
+## 📜 License
+
+This project is developed for educational and demonstration purposes. Licensing and reuse permissions can be defined by the project maintainers.
+
+---
+
+<p align="center">
+  **FraudsFilter — Think Before You Click. Stay Safe Online.** 🛡️
+</p>
