@@ -1,1386 +1,499 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="FraudsFilter helps you identify suspicious messages, links and potential online scams before you act.">
-
-    <meta name="theme-color" content="#09070e">
-
-    <title>FraudsFilter | Detect. Analyse. Protect.</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09070e">
+  <meta name="description" content="FraudsFilter - AI-powered suspicious URL and message detection.">
+  <title>FraudsFilter | Detect. Analyse. Protect.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+  <!-- LANDING PAGE -->
+  <div id="landingPage">
 
-    <header class="site-header">
+    <header class="landing-header">
+      <a href="#home" class="brand">
+        <span class="brand-icon">🛡</span>
+        <span>Frauds<span class="purple">Filter</span></span>
+      </a>
 
-        <a class="brand" href="#home" aria-label="FraudsFilter home">
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#about">About</a>
+      </nav>
 
-            <span class="brand-mark">
-                <svg viewBox="0 0 48 48" fill="none">
-                    <path d="M24 4 40 10v12c0 10.5-6.6 17.8-16 22C14.6 39.8 8 32.5 8 22V10L24 4Z"
-                        stroke="currentColor" stroke-width="3.2"
-                        stroke-linejoin="round" />
-
-                    <path d="m16.5 23.5 5 5 10-11"
-                        stroke="currentColor" stroke-width="3.2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-            </span>
-
-            <span class="brand-copy">
-                <strong id="brandTitle">
-                    Frauds<span>Filter</span>
-                </strong>
-
-                <small id="brandTagline">
-                    Detect. Analyse. Protect.
-                </small>
-            </span>
-
-        </a>
-
-        <!-- Mobile Menu -->
-
-        <button class="mobile-menu"
-            type="button"
-            aria-label="Toggle navigation"
-            aria-expanded="false"
-            id="mobileMenu">
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-        <!-- Navigation Links -->
-
-        <nav class="main-nav" id="mainNav">
-
-            <a class="nav-link active" href="#home">Home</a>
-
-            <a class="nav-link" href="#features">Features</a>
-
-            <a class="nav-link" href="#how-it-works">
-                How It Works
-            </a>
-
-            <a class="nav-link" href="#about">About Us</a>
-
-            <a class="nav-link" href="#contact">Contact</a>
-
-        </nav>
-
-        <div class="header-actions">
-
-            <a class="login-link" href="#account-access">
-                Login
-            </a>
-
-            <a class="button button-primary button-small"
-                href="#scan-section">
-
-                Get Started <span>↗</span>
-
-            </a>
-
-        </div>
-
+      <button class="primary-btn" id="landingStart">
+        Get Started →
+      </button>
     </header>
 
-
     <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <span class="eyebrow">AI-POWERED DIGITAL SAFETY</span>
+
+          <h1>
+            Stay One Step Ahead of
+            <span>Every Digital Scam.</span>
+          </h1>
+
+          <p>
+            Your intelligent security companion. Detect suspicious
+            URLs, identify potential fraud and make safer decisions
+            before clicking, replying or paying.
+          </p>
+
+          <div class="hero-buttons">
+            <button class="primary-btn" id="heroStart">
+              Start Protecting Yourself →
+            </button>
+            <a href="#features" class="secondary-btn">
+              Explore Features
+            </a>
+          </div>
+
+          <div class="trust-note">
+            ✓ Think before you trust. Stay digitally protected.
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-shield">🛡️</div>
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <span class="floating-tag tag-one">✓ Secure Analysis</span>
+          <span class="floating-tag tag-two">⚡ Threat Detection</span>
+        </div>
+      </section>
+
+      <section class="landing-section" id="features">
+        <div class="section-heading">
+          <span class="eyebrow">OUR CAPABILITIES</span>
+          <h2>Smarter Protection for a <span>Safer Internet</span></h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span>🔍</span>
+            <h3>URL Detection</h3>
+            <p>Analyse suspicious URLs and identify possible fraud indicators.</p>
+          </article>
+
+          <article class="feature-card">
+            <span>🤖</span>
+            <h3>Intelligent Analysis</h3>
+            <p>Evaluate messages and links using the project's detection engine.</p>
+          </article>
+
+          <article class="feature-card">
+            <span>📊</span>
+            <h3>Risk Assessment</h3>
+            <p>Understand the risk level and warning signs behind an analysis.</p>
+          </article>
+
+          <article class="feature-card">
+            <span>🕘</span>
+            <h3>Review History</h3>
+            <p>Access your previously analysed links and messages.</p>
+          </article>
+
+          <article class="feature-card">
+            <span>⚡</span>
+            <h3>Quick Testing</h3>
+            <p>Use sample suspicious links to test the scanner easily.</p>
+          </article>
+
+          <article class="feature-card">
+            <span>🔐</span>
+            <h3>Privacy Focused</h3>
+            <p>Analysis runs locally using the existing browser-based engine.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="landing-section how-section" id="how">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2>Three Steps. <span>Better Protection.</span></h2>
+
+        <div class="steps">
+          <div><b>01</b><h3>Paste a Link</h3><p>Enter a suspicious URL or message.</p></div>
+          <div><b>02</b><h3>Analyse</h3><p>Let FraudsFilter examine potential warning signs.</p></div>
+          <div><b>03</b><h3>Review Results</h3><p>Understand the assessment before taking action.</p></div>
+        </div>
+      </section>
+
+      <section class="landing-section about-section" id="about">
+        <span class="eyebrow">ABOUT FRAUDSFILTER</span>
+        <h2>Think Before You <span>Trust.</span></h2>
+        <p>
+          FraudsFilter is a digital safety project designed to help
+          users recognise suspicious links, understand potential
+          online threats and make informed decisions.
+        </p>
+        <button class="primary-btn" id="aboutStart">Try FraudsFilter →</button>
+      </section>
+    </main>
 
-        <!-- ================= HERO SECTION ================= -->
+    <footer>
+      © 2026 FraudsFilter. Academic Project Prototype.
+    </footer>
+  </div>
 
-        <section class="hero-section section-shell" id="home">
 
-            <div class="hero-copy">
+  <!-- DASHBOARD APPLICATION -->
+  <div id="dashboardApp" class="dashboard-app hidden">
 
-                <div class="eyebrow">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-                    <span class="eyebrow-dot"></span>
+      <a href="#" class="dashboard-brand" id="sidebarBrand">
+        <span class="brand-icon">🛡</span>
+        <span>Frauds<span class="purple">Filter</span></span>
+      </a>
 
-                    <span id="heroEyebrow">
-                        AI-POWERED DIGITAL SAFETY
-                    </span>
+      <p class="sidebar-heading">MAIN MENU</p>
 
-                </div>
+      <nav class="sidebar-nav">
 
-                <h1 id="heroTitle">
+        <button class="sidebar-link active" data-view="scanner">
+          <span>▦</span> Dashboard
+        </button>
 
-                    Stay One Step Ahead of
+        <button class="sidebar-link" data-view="history">
+          <span>◷</span> Review History
+        </button>
 
-                    <span>Every Digital Scam.</span>
+        <button class="sidebar-link" data-view="scanner">
+          <span>⌕</span> URL Scanner
+        </button>
 
-                </h1>
+        <button class="sidebar-link" data-view="guide">
+          <span>ⓘ</span> Safety Guide
+        </button>
 
-                <p class="hero-description" id="heroDesc">
+      </nav>
 
-                    Your intelligent security companion.
-                    Detect suspicious activities, analyse digital
-                    threats, and make safer decisions before you
-                    click, reply, or pay.
+      <div class="sidebar-bottom">
+        <div class="sidebar-shield">🛡️</div>
+        <h3>Stay Protected</h3>
+        <p>Always verify a link before sharing personal or financial information.</p>
+        <button id="backToHome" class="sidebar-home">← Back to Home</button>
+      </div>
 
-                </p>
+    </aside>
 
-                <div class="hero-actions">
 
-                    <a class="button button-primary"
-                        href="#scan-section">
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
 
-                        Start Protecting Yourself
+      <header class="dashboard-header">
+        <div>
+          <span class="eyebrow">SECURITY WORKSPACE</span>
+          <h1 id="pageTitle">Dashboard</h1>
+          <p id="pageSubtitle">Analyse suspicious links and messages.</p>
+        </div>
 
-                        <span>→</span>
+        <div class="system-status">
+          <span class="status-dot"></span>
+          Scanner Ready
+        </div>
+      </header>
 
-                    </a>
 
-                    <a class="button button-secondary"
-                        href="#features">
+      <div class="dashboard-content">
 
-                        <span class="play-icon">▷</span>
+        <!-- SCANNER VIEW -->
+        <section class="dashboard-view" id="scannerView">
 
-                        Explore Features
-
-                    </a>
-
-                </div>
-
-                <div class="hero-trust-row">
-
-                    <div class="trust-avatars">
-
-                        <span>✓</span>
-                        <span>✦</span>
-                        <span>⌁</span>
-
-                    </div>
-
-                    <p>
-
-                        <strong>
-                            Think before you trust.
-                        </strong>
-
-                        <br>
-
-                        <span>
-                            Understand the warning signs.
-                            Stay in control.
-                        </span>
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- HERO ILLUSTRATION -->
-
-            <div class="hero-visual"
-                aria-label="Fraud detection security illustration">
-
-                <div class="visual-orbit orbit-one"></div>
-
-                <div class="visual-orbit orbit-two"></div>
-
-                <div class="visual-glow"></div>
-
-                <div class="scan-ring ring-one"></div>
-
-                <div class="scan-ring ring-two"></div>
-
-                <div class="shield-illustration">
-
-                    <svg viewBox="0 0 220 250"
-                        role="img"
-                        aria-label="Protected shield">
-
-                        <defs>
-
-                            <linearGradient
-                                id="shieldGradient"
-                                x1="20"
-                                y1="10"
-                                x2="190"
-                                y2="230"
-                                gradientUnits="userSpaceOnUse">
-
-                                <stop stop-color="#e879ff"/>
-
-                                <stop offset=".48"
-                                    stop-color="#a43df0"/>
-
-                                <stop offset="1"
-                                    stop-color="#5420a7"/>
-
-                            </linearGradient>
-
-                            <filter id="shieldShadow"
-                                x="-40%"
-                                y="-30%"
-                                width="180%"
-                                height="180%">
-
-                                <feGaussianBlur
-                                    stdDeviation="12"/>
-
-                            </filter>
-
-                        </defs>
-
-                        <path
-                            d="M110 16 190 47v61c0 58-34 98-80 124-46-26-80-66-80-124V47l80-31Z"
-                            fill="#9c35df"
-                            opacity=".38"
-                            filter="url(#shieldShadow)"/>
-
-                        <path
-                            d="M110 16 190 47v61c0 58-34 98-80 124-46-26-80-66-80-124V47l80-31Z"
-                            fill="url(#shieldGradient)"
-                            fill-opacity=".22"
-                            stroke="#dc83ff"
-                            stroke-width="4"/>
-
-                        <path
-                            d="M110 34 174 59v49c0 45-25 77-64 100-39-23-64-55-64-100V59l64-25Z"
-                            fill="#1a1025"
-                            stroke="#a83de8"
-                            stroke-width="2"/>
-
-                        <path
-                            d="m77 119 22 22 46-49"
-                            fill="none"
-                            stroke="#f7d9ff"
-                            stroke-width="11"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"/>
-
-                    </svg>
-
-                </div>
-
-                <div class="visual-chip chip-top">
-
-                    <span class="chip-icon">⌁</span>
-
-                    <span>
-                        <b>AI scan active</b>
-                        <small>Analysing signals</small>
-                    </span>
-
-                    <i class="pulse-dot"></i>
-
-                </div>
-
-                <div class="visual-chip chip-bottom">
-
-                    <span class="status-check">✓</span>
-
-                    <span>
-                        <b>Threat awareness</b>
-                        <small>Stay one step ahead</small>
-                    </span>
-
-                </div>
-
-                <div class="floating-spark spark-one">✦</div>
-
-                <div class="floating-spark spark-two">✧</div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= PLATFORM HIGHLIGHTS ================= -->
-
-        <section class="signal-strip section-shell">
-
+          <div class="welcome-row">
             <div>
-
-                <span class="signal-icon">⌕</span>
-
-                <span>
-                    <b>Spot suspicious signals</b>
-
-                    <small>
-                        Recognise common scam patterns
-                    </small>
-                </span>
-
+              <span class="eyebrow">URL & MESSAGE ANALYSIS</span>
+              <h2>Check Before You <span>Click.</span></h2>
+              <p>
+                Paste a suspicious URL or message to identify
+                potential warning signs.
+              </p>
             </div>
+          </div>
 
-            <div>
+          <div class="scanner-layout">
 
-                <span class="signal-icon">◇</span>
+            <!-- SCANNER FORM -->
+            <section class="scanner-card">
 
-                <span>
-                    <b>Understand the risk</b>
-
-                    <small>
-                        Clear, explainable assessments
-                    </small>
-                </span>
-
-            </div>
-
-            <div>
-
-                <span class="signal-icon">✓</span>
-
-                <span>
-                    <b>Choose safer actions</b>
-
-                    <small>
-                        Practical recommendations
-                    </small>
-                </span>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= SCANNER SECTION ================= -->
-
-        <section class="scanner-section section-shell"
-            id="scan-section">
-
-            <div class="section-intro">
-
-                <span class="eyebrow">
-
-                    <span class="eyebrow-dot"></span>
-
-                    YOUR FIRST LINE OF DEFENCE
-
-                </span>
-
-                <h2 id="scanTitle">
-
-                    Scan for
-
-                    <span>Possible Fraud</span>
-
-                </h2>
-
-                <p id="scanDesc">
-
-                    Paste a suspicious message or link.
-                    FraudsFilter will check it for known
-                    warning signs.
-
-                </p>
-
-            </div>
-
-
-            <div class="scanner-card">
-
-                <div class="scanner-card-top">
-
-                    <div class="scanner-label">
-
-                        <span class="scanner-symbol">⌕</span>
-
-                        <div>
-
-                            <strong>Content analyser</strong>
-
-                            <small>
-                                Message & URL screening
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                    <button class="sample-btn"
-                        id="sampleBtn"
-                        type="button">
-
-                        Try Sample <span>↗</span>
-
-                    </button>
-
+              <div class="scanner-card-heading">
+                <div>
+                  <span class="scanner-icon">⌕</span>
+                  <div>
+                    <h3>Link & Message Scanner</h3>
+                    <p>Enter the content you want to analyse.</p>
+                  </div>
                 </div>
 
-
-                <div class="inline-error hidden"
-                    id="inlineError"
-                    role="alert">
-                </div>
-
-
-                <label class="sr-only"
-                    for="messageInput">
-
-                    Suspicious message or URL
-
-                </label>
-
-
-                <textarea
-                    id="messageInput"
-                    maxlength="10000"
-                    placeholder="Paste a suspicious SMS, email, WhatsApp message or URL here...">
-                </textarea>
-
-
-                <div class="input-footer">
-
-                    <span id="charCount">
-                        0 characters
-                    </span>
-
-                    <button class="button button-primary analyze-btn"
-                        id="analyzeBtn"
-                        type="button">
-
-                        <span class="search-icon">⌕</span>
-
-                        <span>Analyse Now</span>
-
-                        <span>→</span>
-
-                    </button>
-
-                </div>
-
-
-                <div class="privacy-note" id="privacyBanner">
-
-                    <span>▣</span>
-
-                    Your content is analysed locally in this
-                    browser and is not uploaded to a server.
-
-                </div>
-
-            </div>
-
-
-            <!-- ANALYSIS RESULT -->
-
-            <section class="result-card hidden"
-                id="resultCard"
-                aria-live="polite">
-
-                <div class="result-top">
-
-                    <div>
-
-                        <span class="eyebrow"
-                            id="resultEyebrow">
-
-                            ANALYSIS RESULT
-
-                        </span>
-
-                        <h3 id="riskTitle">
-                            Analysis Complete
-                        </h3>
-
-                    </div>
-
-                    <div class="risk-badge"
-                        id="riskBadge">
-
-                        LOW RISK
-
-                    </div>
-
-                </div>
-
-
-                <div class="score-row">
-
-                    <div class="score-circle"
-                        id="scoreCircle">
-
-                        <span id="scoreValue"
-                            class="conf-text">
-
-                            LOW
-
-                        </span>
-
-                        <small id="scoreUnit">
-                            CONFIDENCE
-                        </small>
-
-                    </div>
-
-
-                    <div class="score-info">
-
-                        <h4 id="scoreHeading">
-                            Risk Assessment
-                        </h4>
-
-                        <p id="scoreDescription">
-
-                            The result is based on warning
-                            signs detected in the submitted content.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="result-section highlighted-section"
-                    id="highlightedSection">
-
-                    <h4 id="highlightedTitle">
-                        Highlighted Message
-                    </h4>
-
-                    <div class="highlighted-content"
-                        id="highlightedContent">
-                    </div>
-
-                </div>
-
-
-                <div class="result-grid">
-
-                    <div class="result-section">
-
-                        <h4 id="indicatorsHeading">
-                            Detected Indicators
-                        </h4>
-
-                        <div id="indicatorsList"
-                            class="indicator-list">
-                        </div>
-
-                    </div>
-
-
-                    <div class="result-section">
-
-                        <h4 id="categoriesHeading">
-                            Scam Patterns
-                        </h4>
-
-                        <div id="categoriesList"
-                            class="category-list">
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="result-section explanation">
-
-                    <h4 id="reasonsHeading">
-                        Why is this suspicious?
-                    </h4>
-
-                    <ul id="reasonsList"></ul>
-
-                </div>
-
-
-                <div class="result-section recommendation">
-
-                    <h4 id="recommendationsHeading">
-                        What should you do?
-                    </h4>
-
-                    <ul id="recommendationsList"></ul>
-
-                </div>
-
-
-                <div class="result-actions">
-
-                    <button type="button"
-                        class="action-btn"
-                        id="copyResultBtn">
-
-                        ▣ Copy Result
-
-                    </button>
-
-                    <button type="button"
-                        class="action-btn"
-                        id="shareResultBtn">
-
-                        ↗ Share Result
-
-                    </button>
-
-                    <span class="action-feedback hidden"
-                        id="actionFeedback">
-                    </span>
-
-                </div>
-
-
-                <!-- USER FEEDBACK -->
-
-                <div class="result-section feedback-section"
-                    id="feedbackSection">
-
-                    <h4 id="feedbackTitle">
-                        Was this assessment helpful?
-                    </h4>
-
-                    <div class="feedback-options">
-
-                        <button type="button"
-                            class="feedback-btn"
-                            data-feedback="correct">
-
-                            Correct Detection
-
-                        </button>
-
-                        <button type="button"
-                            class="feedback-btn"
-                            data-feedback="false_positive">
-
-                            False Positive
-
-                        </button>
-
-                        <button type="button"
-                            class="feedback-btn"
-                            data-feedback="missed_scam">
-
-                            Missed Scam
-
-                        </button>
-
-                    </div>
-
-
-                    <div class="feedback-form hidden"
-                        id="feedbackForm">
-
-                        <input type="text"
-                            id="feedbackNotes"
-                            class="feedback-input"
-                            placeholder="Optional note (e.g. why this was incorrect)...">
-
-                        <div class="feedback-actions">
-
-                            <button type="button"
-                                class="feedback-submit-btn"
-                                id="submitFeedbackBtn">
-
-                                Submit Feedback
-
-                            </button>
-
-                            <button type="button"
-                                class="feedback-export-btn"
-                                id="exportFeedbackBtn">
-
-                                Export Feedback (JSON)
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="feedback-status hidden"
-                        id="feedbackStatus">
-                    </div>
-
-                </div>
-
-
-                <div class="disclaimer">
-
-                    <strong>Important:</strong>
-
-                    <span id="disclaimerText">
-
-                        This prototype provides a risk assessment,
-                        not a guarantee that content is fraudulent
-                        or legitimate. Always verify important
-                        requests through an independent official channel.
-
-                    </span>
-
-                </div>
+                <span class="live-badge">● LIVE</span>
+              </div>
+
+              <label for="messageInput">Suspicious URL or message</label>
+
+              <textarea
+                id="messageInput"
+                maxlength="10000"
+                placeholder="https://example.com or paste a suspicious message..."
+              ></textarea>
+
+              <div class="input-footer">
+                <span id="charCount">0 characters</span>
+                <span>Maximum 10,000 characters</span>
+              </div>
+
+              <div id="inlineError" class="inline-error hidden" role="alert"></div>
+
+              <div class="scanner-actions">
+                <button id="sampleBtn" class="secondary-btn" type="button">
+                  Try Sample
+                </button>
+
+                <button id="analyzeBtn" class="primary-btn" type="button">
+                  Analyse Now →
+                </button>
+              </div>
+
+              <div class="privacy-note" id="privacyBanner">
+                🔒 Your content is analysed locally in this browser.
+              </div>
 
             </section>
 
-        </section>
 
+            <!-- SAMPLE LINKS PANEL -->
+            <aside class="sample-panel">
 
-        <!-- ================= FEATURES SECTION ================= -->
+              <div class="sample-heading">
+                <span class="eyebrow">TEST THE SCANNER</span>
+                <h3>Sample Links</h3>
+                <p>Select any sample to automatically test it.</p>
+              </div>
 
-        <section class="features-section section-shell"
-            id="features">
-
-            <div class="section-heading-centered">
-
-                <span class="eyebrow">
-
-                    <span class="eyebrow-dot"></span>
-
-                    WHAT WE HELP YOU CHECK
-
+              <button class="sample-link high-sample" data-sample="high">
+                <span class="risk-dot"></span>
+                <span class="sample-info">
+                  <b>High Risk Example</b>
+                  <small>Fake bank KYC verification</small>
+                  <code>secure-bank-kyc.xyz</code>
                 </span>
+                <span class="sample-arrow">→</span>
+              </button>
 
-                <h2>
-
-                    One platform.
-
-                    <span>Multiple layers</span>
-
-                    of protection.
-
-                </h2>
-
-                <p>
-                    Explore the signals that can help you
-                    recognise suspicious digital activity.
-                </p>
-
-            </div>
-
-
-            <div class="feature-grid">
-
-
-                <article class="feature-card">
-
-                    <span class="feature-icon">↗</span>
-
-                    <h3>URL Fraud Detection</h3>
-
-                    <p>
-                        Spot suspicious links, look-alike domains,
-                        URL shorteners and risky web addresses.
-                    </p>
-
-                    <a href="#scan-section">
-                        Try content scan <span>→</span>
-                    </a>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <span class="feature-icon">✉</span>
-
-                    <h3>Message Analysis</h3>
-
-                    <p>
-                        Identify urgency, impersonation,
-                        payment pressure and common scam language.
-                    </p>
-
-                    <a href="#scan-section">
-                        Try content scan <span>→</span>
-                    </a>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <span class="feature-icon">＠</span>
-
-                    <h3>Email Scam Signals</h3>
-
-                    <p>
-                        Learn to recognise suspicious sender
-                        details and phishing indicators in email content.
-                    </p>
-
-                    <a href="#scan-section">
-                        Try content scan <span>→</span>
-                    </a>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <span class="feature-icon">⌕</span>
-
-                    <h3>Phone Number Awareness</h3>
-
-                    <p>
-                        Understand verification limits and
-                        warning signs linked to unexpected calls or texts.
-                    </p>
-
-                    <a href="#how-it-works">
-                        Learn how it works <span>→</span>
-                    </a>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <span class="feature-icon">₹</span>
-
-                    <h3>Transaction Risk Awareness</h3>
-
-                    <p>
-                        Recognise unusual payment requests and
-                        never share OTPs, PINs or card security details.
-                    </p>
-
-                    <a href="#how-it-works">
-                        Learn how it works <span>→</span>
-                    </a>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <span class="feature-icon">✧</span>
-
-                    <h3>Explainable Analysis</h3>
-
-                    <p>
-                        See the indicators behind an assessment,
-                        with practical steps to verify independently.
-                    </p>
-
-                    <a href="#scan-section">
-                        Try content scan <span>→</span>
-                    </a>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= HOW IT WORKS ================= -->
-
-        <section class="how-section section-shell"
-            id="how-it-works">
-
-            <div class="how-copy">
-
-                <span class="eyebrow">
-
-                    <span class="eyebrow-dot"></span>
-
-                    A CLEARER WAY TO CHECK
-
+              <button class="sample-link medium-sample" data-sample="medium">
+                <span class="risk-dot"></span>
+                <span class="sample-info">
+                  <b>Medium Risk Example</b>
+                  <small>Suspicious payment notification</small>
+                  <code>bit.ly/payment-update</code>
                 </span>
-
-                <h2>
-
-                    How FraudsFilter
-
-                    <span>works</span>
-
-                </h2>
-
-                <p>
-
-                    Take a moment to review suspicious content
-                    before you respond, click a link or make a payment.
-
-                </p>
-
-                <a class="text-link" href="#scan-section">
-
-                    Start a check <span>→</span>
-
-                </a>
-
-            </div>
-
-
-            <div class="steps-list">
-
-
-                <article class="step-item">
-
-                    <span class="step-number">01</span>
-
-                    <div>
-
-                        <h3>Submit suspicious content</h3>
-
-                        <p>
-                            Paste a message, URL or other text
-                            you want to review.
-                        </p>
-
-                    </div>
-
-                    <span class="step-mark">↗</span>
-
-                </article>
-
-
-                <article class="step-item">
-
-                    <span class="step-number">02</span>
-
-                    <div>
-
-                        <h3>Analyse the warning signs</h3>
-
-                        <p>
-                            The current prototype checks the
-                            content against its local detection rules.
-                        </p>
-
-                    </div>
-
-                    <span class="step-mark">⌕</span>
-
-                </article>
-
-
-                <article class="step-item">
-
-                    <span class="step-number">03</span>
-
-                    <div>
-
-                        <h3>Review the assessment</h3>
-
-                        <p>
-                            Understand the risk category,
-                            detected indicators and possible scam patterns.
-                        </p>
-
-                    </div>
-
-                    <span class="step-mark">◇</span>
-
-                </article>
-
-
-                <article class="step-item">
-
-                    <span class="step-number">04</span>
-
-                    <div>
-
-                        <h3>Choose a safer next step</h3>
-
-                        <p>
-                            Use the recommendations and verify
-                            important requests through official channels.
-                        </p>
-
-                    </div>
-
-                    <span class="step-mark">✓</span>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= TRUST SECTION ================= -->
-
-        <section class="trust-section section-shell"
-            id="about">
-
-            <div class="trust-panel">
-
-                <div class="trust-panel-copy">
-
-                    <span class="eyebrow">
-
-                        <span class="eyebrow-dot"></span>
-
-                        BUILT AROUND AWARENESS
-
-                    </span>
-
-                    <h2>
-
-                        Pause. Check.
-
-                        <span>Protect.</span>
-
-                    </h2>
-
-                    <p>
-
-                        FraudsFilter is designed to make digital
-                        safety checks easier to understand.
-                        It highlights potential warning signs
-                        so you can make more informed decisions—
-                        not blindly trust a score.
-
-                    </p>
-
-
-                    <div class="trust-points">
-
-                        <span>✓ Explainable signals</span>
-
-                        <span>✓ Privacy-conscious prototype</span>
-
-                        <span>✓ Clear safety reminders</span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="trust-visual">
-
-                    <div class="trust-shield">
-                        ✓
-                    </div>
-
-                    <div class="trust-caption">
-
-                        <span class="pulse-dot"></span>
-
-                        AWARENESS IS YOUR FIRST DEFENCE
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= STATISTICS ================= -->
-
-        <section class="stats-section section-shell"
-            aria-label="Illustrative project metrics">
-
-            <div class="stat-heading">
-
-                <span class="eyebrow">
-
-                    <span class="eyebrow-dot"></span>
-
-                    THE PROJECT AT A GLANCE
-
+                <span class="sample-arrow">→</span>
+              </button>
+
+              <button class="sample-link low-sample" data-sample="low">
+                <span class="risk-dot"></span>
+                <span class="sample-info">
+                  <b>Low Risk Example</b>
+                  <small>Common public website</small>
+                  <code>https://www.google.com</code>
                 </span>
+                <span class="sample-arrow">→</span>
+              </button>
 
+              <div class="sample-tip">
+                <span>💡</span>
                 <p>
-                    Illustrative prototype capabilities—
-                    not live detection statistics.
+                  Sample labels are illustrative. The actual result
+                  is generated by your detection engine and may differ.
                 </p>
+              </div>
+
+            </aside>
+
+          </div>
+        </section>
+
+
+        <!-- RESULT VIEW -->
+        <section class="dashboard-view hidden" id="resultView">
+
+          <button class="back-button" id="backToScanner">
+            ← Back to Scanner
+          </button>
+
+          <div class="result-page-heading">
+            <span class="eyebrow">COMPLETED ANALYSIS</span>
+            <h2>Analysis <span>Report</span></h2>
+            <p>Review the detected warning signs and recommendations.</p>
+          </div>
+
+          <section class="result-card hidden" id="resultCard" aria-live="polite">
+
+            <div class="result-top">
+              <div>
+                <span class="eyebrow">ANALYSIS RESULT</span>
+                <h3 id="riskTitle">Analysis Complete</h3>
+              </div>
+              <div class="risk-badge" id="riskBadge">LOW RISK</div>
+            </div>
+
+            <div class="score-row">
+              <div class="score-circle" id="scoreCircle">
+                <span id="scoreValue" class="conf-text">LOW</span>
+                <small id="scoreUnit">CONFIDENCE</small>
+              </div>
+
+              <div class="score-info">
+                <h4 id="scoreHeading">Risk Assessment</h4>
+                <p id="scoreDescription"></p>
+              </div>
+            </div>
+
+            <section class="result-section" id="highlightedSection">
+              <h4 id="highlightedTitle">Analysed Content</h4>
+              <div class="highlighted-content" id="highlightedContent"></div>
+            </section>
+
+            <div class="result-grid">
+
+              <section class="result-section">
+                <h4>Detected Indicators</h4>
+                <div id="indicatorsList" class="indicator-list"></div>
+              </section>
+
+              <section class="result-section">
+                <h4>Fraud Categories</h4>
+                <div id="categoriesList" class="category-list"></div>
+              </section>
 
             </div>
 
+            <section class="result-section explanation">
+              <h4>Why Was This Result Generated?</h4>
+              <ul id="reasonsList"></ul>
+            </section>
 
-            <div class="stats-grid">
+            <section class="result-section recommendation">
+              <h4>Recommended Actions</h4>
+              <ul id="recommendationsList"></ul>
+            </section>
 
-                <div>
-                    <strong>3</strong>
-                    <span>Interface languages</span>
-                </div>
-
-                <div>
-                    <strong>2</strong>
-                    <span>Core scan inputs</span>
-                </div>
-
-                <div>
-                    <strong>100%</strong>
-                    <span>Browser-side analysis in this prototype</span>
-                </div>
-
-                <div>
-                    <strong>0</strong>
-                    <span>Need to share OTPs or PINs</span>
-                </div>
-
+            <div class="result-actions">
+              <button id="copyResultBtn" class="secondary-btn">Copy Result</button>
+              <button id="shareResultBtn" class="secondary-btn">Share Result</button>
             </div>
+
+            <p id="actionFeedback" class="action-feedback hidden"></p>
+
+            <section class="result-section feedback-section" id="feedbackSection">
+              <h4>Help Improve the Analysis</h4>
+
+              <div class="feedback-options">
+                <button class="feedback-btn" data-feedback="correct">Correct</button>
+                <button class="feedback-btn" data-feedback="false_positive">False Positive</button>
+                <button class="feedback-btn" data-feedback="missed_scam">Missed Scam</button>
+              </div>
+
+              <div id="feedbackForm" class="hidden">
+                <textarea id="feedbackNotes" class="feedback-input" placeholder="Additional feedback (optional)"></textarea>
+                <div class="feedback-actions">
+                  <button id="submitFeedbackBtn" class="primary-btn">Submit Feedback</button>
+                  <button id="exportFeedbackBtn" class="secondary-btn">Export Feedback</button>
+                </div>
+              </div>
+
+              <p id="feedbackStatus" class="feedback-status hidden"></p>
+            </section>
+
+            <div class="disclaimer">
+              <strong>Important:</strong>
+              Automated analysis is not a guarantee that a link is safe.
+              Verify websites independently before sharing sensitive information.
+            </div>
+
+          </section>
+        </section>
+
+
+        <!-- HISTORY VIEW -->
+        <section class="dashboard-view hidden" id="historyView">
+
+          <div class="view-heading">
+            <span class="eyebrow">YOUR ACTIVITY</span>
+            <h2>Review <span>History</span></h2>
+            <p>Access your previously analysed URLs and messages.</p>
+          </div>
+
+          <div class="history-card">
+            <div class="history-toolbar">
+              <h3>Previous Reviews</h3>
+              <button id="clearHistory" class="danger-btn">Clear History</button>
+            </div>
+
+            <div id="historyList"></div>
+          </div>
 
         </section>
 
 
-        <!-- ================= CTA SECTION ================= -->
+        <!-- SAFETY GUIDE -->
+        <section class="dashboard-view hidden" id="guideView">
 
-        <section class="cta-section section-shell"
-            id="contact">
+          <div class="view-heading">
+            <span class="eyebrow">DIGITAL SAFETY</span>
+            <h2>Online Safety <span>Guide</span></h2>
+            <p>Follow these basic practices before trusting an online link.</p>
+          </div>
 
-            <div class="cta-card">
+          <div class="guide-grid">
+            <article>
+              <span>🔗</span>
+              <h3>Check the URL</h3>
+              <p>Look for misspellings, unusual domains and misleading website names.</p>
+            </article>
 
-                <div>
+            <article>
+              <span>🔐</span>
+              <h3>Protect Credentials</h3>
+              <p>Never share OTPs, passwords or banking information through suspicious links.</p>
+            </article>
 
-                    <span class="eyebrow">
+            <article>
+              <span>⚠️</span>
+              <h3>Avoid Urgency</h3>
+              <p>Be careful with messages demanding immediate payment or account verification.</p>
+            </article>
 
-                        YOUR DIGITAL SAFETY STARTS HERE
-
-                    </span>
-
-                    <h2>
-
-                        Don't let scammers get
-
-                        <span>ahead of you.</span>
-
-                    </h2>
-
-                    <p>
-                        Take a closer look at suspicious content
-                        before taking action.
-                    </p>
-
-                </div>
-
-
-                <a class="button button-light"
-                    href="#scan-section">
-
-                    Start a free check <span>→</span>
-
-                </a>
-
-            </div>
+            <article>
+              <span>✓</span>
+              <h3>Verify Independently</h3>
+              <p>Visit official websites directly instead of trusting unexpected messages.</p>
+            </article>
+          </div>
 
         </section>
 
+      </div>
 
-        <!-- ================= ACCOUNT ACCESS ================= -->
-
-        <section class="account-access section-shell"
-            id="account-access">
-
-            <p>
-
-                <strong>Account access is coming next.</strong>
-
-                The login and registration screens will be
-                added in the next page-building phase,
-                as specified in the project plan.
-
-            </p>
-
-            <a href="#home">
-                Back to top ↑
-            </a>
-
-        </section>
+      <footer class="dashboard-footer">
+        FraudsFilter © 2026 | Detect. Analyse. Protect.
+      </footer>
 
     </main>
+  </div>
 
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="site-footer">
-
-        <div class="footer-main">
-
-
-            <a class="brand footer-brand"
-                href="#home">
-
-                <span class="brand-mark">
-
-                    <svg viewBox="0 0 48 48" fill="none">
-
-                        <path
-                            d="M24 4 40 10v12c0 10.5-6.6 17.8-16 22C14.6 39.8 8 32.5 8 22V10L24 4Z"
-                            stroke="currentColor"
-                            stroke-width="3.2"
-                            stroke-linejoin="round"/>
-
-                        <path
-                            d="m16.5 23.5 5 5 10-11"
-                            stroke="currentColor"
-                            stroke-width="3.2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"/>
-
-                    </svg>
-
-                </span>
-
-
-                <span class="brand-copy">
-
-                    <strong>
-                        Frauds<span>Filter</span>
-                    </strong>
-
-                    <small>
-                        Detect. Analyse. Protect.
-                    </small>
-
-                </span>
-
-            </a>
-
-
-            <p>
-
-                Helping people recognise digital warning
-                signs and make safer online decisions.
-
-            </p>
-
-
-            <div class="footer-links">
-
-                <a href="#about">About</a>
-
-                <a href="#features">Features</a>
-
-                <a href="#scan-section">Scan Content</a>
-
-                <a href="#contact">Contact</a>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 FraudsFilter. Academic project prototype.
-            </span>
-
-            <span>
-                Stay alert. Stay protected.
-            </span>
-
-        </div>
-
-    </footer>
-
-
-    <!-- ================= JAVASCRIPT ================= -->
-
-    <script type="module" src="script.js"></script>
-
-    <script>
-
-        // MOBILE NAVIGATION
-
-        const menuButton =
-            document.getElementById("mobileMenu");
-
-        const navigation =
-            document.getElementById("mainNav");
-
-
-        menuButton?.addEventListener("click", () => {
-
-            const isOpen =
-                navigation.classList.toggle("is-open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-        });
-
-
-        // CLOSE MOBILE MENU AFTER CLICKING
-
-        navigation?.querySelectorAll("a").forEach(link => {
-
-            link.addEventListener("click", () => {
-
-                navigation.classList.remove("is-open");
-
-                menuButton?.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            });
-
-        });
-
-
-        // ACTIVE NAVIGATION LINK
-
-        const navLinks =
-            document.querySelectorAll(".nav-link");
-
-        const sections = [
-            ...document.querySelectorAll("main section[id]")
-        ];
-
-
-        if ("IntersectionObserver" in window) {
-
-            const observer = new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (entry.isIntersecting) {
-
-                            navLinks.forEach(link => {
-
-                                link.classList.toggle(
-                                    "active",
-                                    link.getAttribute("href") ===
-                                    `#${entry.target.id}`
-                                );
-
-                            });
-
-                        }
-
-                    });
-
-                },
-                {
-                    rootMargin: "-35% 0px -55% 0px"
-                }
-            );
-
-
-            sections.forEach(section => {
-
-                observer.observe(section);
-
-            });
-
-        }
-
-    </script>
-
+  <script type="module" src="script.js"></script>
 </body>
-
 </html>

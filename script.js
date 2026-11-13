@@ -1,139 +1,545 @@
-/**
- * FraudsFilter - script.js
- * Main application entry point connecting detection engine modules with UI controller.
- */
 
 import { UIController } from "./ui.js";
 import { analyzeMessage } from "./scoring.js";
 import { getTranslations } from "./rules.js";
 
-// Initialize UI Controller
 const ui = new UIController();
 
-/**
- * Perform analysis on the user input message or URL.
- */
+const landingPage = document.getElementById("landingPage");
+const dashboardApp = document.getElementById("dashboardApp");
+
+const scannerView = document.getElementById("scannerView");
+const resultView = document.getElementById("resultView");
+const historyView = document.getElementById("historyView");
+const guideView = document.getElementById("guideView");
+
+const pageTitle = document.getElementById("pageTitle");
+const pageSubtitle = document.getElementById("pageSubtitle");
+
+const HISTORY_KEY = "fraudsfilter_review_history";
+
+const sampleData = {
+    high:
+        "URGENT! Your bank account will be blocked within 24 hours. " +
+        "Verify your KYC immediately and share your OTP using this link: " +
+        "http://secure-bank-kyc.xyz/verify",
+
+    medium:
+        "Your payment is pending. Click this shortened link to check " +
+        "your payment status immediately: http://bit.ly/payment-update",
+
+    low:
+        "Visit the official Google website: https://www.google.com"
+};
+
+
+/* ==========================================
+   PAGE NAVIGATION
+========================================== */
+
+function openDashboard() {
+    landingPage.classList.add("hidden");
+    dashboardApp.classList.remove("hidden");
+
+    showDashboardView("scanner");
+}
+
+function showDashboardView(view) {
+
+    const views = {
+        scanner: scannerView,
+        result: resultView,
+        history: historyView,
+        guide: guideView
+    };
+
+    Object.values(views).forEach(element => {
+        element.classList.add("hidden");
+    });
+
+    if (!views[view]) return;
+
+    views[view].classList.remove("hidden");
+
+    const titles = {
+        scanner: ["Dashboard", "Analyse suspicious links and messages."],
+        result: ["Analysis Result", "Review your security assessment."],
+        history: ["Review History", "Access your previous analyses."],
+        guide: ["Safety Guide", "Learn how to identify online threats."]
+    };
+
+    pageTitle.textContent = titles[view][0];
+    pageSubtitle.textContent = titles[view][1];
+
+    document.querySelectorAll(".sidebar-link").forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.view === view
+        );
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    if (view === "history") {
+        renderHistory();
+    }
+}
+
+
+/* ==========================================
+   NAVIGATION EVENTS
+========================================== */
+
+function initializeNavigation() {
+
+    document.getElementById("landingStart")
+        .addEventListener("click", openDashboard);
+
+    document.getElementById("heroStart")
+        .addEventListener("click", openDashboard);
+
+    document.getElementById("aboutStart")
+        .addEventListener("click", openDashboard);
+
+    document.getElementById("backToHome")
+        .addEventListener("click", () => {
+
+            dashboardApp.classList.add("hidden");
+            landingPage.classList.remove("hidden");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+    document.getElementById("sidebarBrand")
+        .addEventListener("click", event => {
+            event.preventDefault();
+            showDashboardView("scanner");
+        });
+
+    document.querySelectorAll(".sidebar-link").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            showDashboardView(button.dataset.view);
+
+        });
+
+    });
+
+    document.getElementById("backToScanner")
+        .addEventListener("click", () => {
+            showDashboardView("scanner");
+        });
+
+}
+
+
+/* ==========================================
+   REVIEW HISTORY STORAGE
+========================================== */
+
+function getHistory() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(HISTORY_KEY) || "[]"
+        );
+
+    } catch (error) {
+
+        console.error("Could not load review history:", error);
+
+        return [];
+
+    }
+
+}
+
+
+function saveReview(text, result) {
+
+    const history = getHistory();
+
+    const review = {
+        id: Date.now(),
+        text: text,
+        risk: result.risk,
+        confidence: result.confidence?.level || "LOW",
+        date: new Date().toLocaleString()
+    };
+
+    history.unshift(review);
+
+    // Keep the latest 50 reviews.
+    localStorage.setItem(
+        HISTORY_KEY,
+        JSON.stringify(history.slice(0, 50))
+    );
+
+}
+
+
+/* ==========================================
+   RENDER REVIEW HISTORY
+========================================== */
+
+function renderHistory() {
+
+    const historyList = document.getElementById("historyList");
+
+    const history = getHistory();
+
+    historyList.innerHTML = "";
+
+    if (history.length === 0) {
+
+        historyList.innerHTML = `
+            <div class="history-empty">
+                <h3>No Reviews Yet</h3>
+                <p>Your analysed URLs and messages will appear here.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    history.forEach((item, index) => {
+
+        const row = document.createElement("div");
+
+        row.className = "history-row";
+
+        const risk = String(item.risk || "LOW").toLowerCase();
+
+        const riskBadge = document.createElement("span");
+        riskBadge.className = `history-risk ${risk}`;
+        riskBadge.textContent = `${risk.toUpperCase()} RISK`;
+
+        const details = document.createElement("div");
+        details.className = "history-details";
+
+        const text = document.createElement("b");
+        text.textContent = item.text;
+
+        const date = document.createElement("small");
+        date.textContent = item.date;
+
+        details.append(text, date);
+
+        const reviewButton = document.createElement("button");
+        reviewButton.className = "history-open";
+        reviewButton.textContent = "Review Again";
+
+        reviewButton.addEventListener("click", () => {
+
+            ui.messageInput.value = item.text;
+
+            updateCharCount();
+
+            showDashboardView("scanner");
+
+            runAnalysis();
+
+        });
+
+        row.append(riskBadge, details, reviewButton);
+
+        historyList.appendChild(row);
+
+    });
+
+}
+
+
+/* ==========================================
+   CLEAR HISTORY
+========================================== */
+
+function initializeHistory() {
+
+    document.getElementById("clearHistory")
+        .addEventListener("click", () => {
+
+            const history = getHistory();
+
+            if (history.length === 0) return;
+
+            const confirmClear = confirm(
+                "Are you sure you want to clear all review history?"
+            );
+
+            if (!confirmClear) return;
+
+            localStorage.removeItem(HISTORY_KEY);
+
+            renderHistory();
+
+        });
+
+}
+
+
+/* ==========================================
+   CHARACTER COUNTER
+========================================== */
+
+function updateCharCount() {
+
+    if (!ui.messageInput || !ui.charCount) return;
+
+    const count = ui.messageInput.value.length;
+
+    const translations = getTranslations(ui.currentLanguage);
+
+    const template = translations.char_count || "{count} characters";
+
+    ui.charCount.textContent = template.replace(
+        "{count}",
+        count
+    );
+
+}
+
+
+/* ==========================================
+   URL / MESSAGE ANALYSIS
+========================================== */
+
 function runAnalysis() {
-    const text = ui.messageInput ? ui.messageInput.value.trim() : "";
-    const t = getTranslations(ui.currentLanguage);
+
+    const text = ui.messageInput.value.trim();
+
+    const translations = getTranslations(ui.currentLanguage);
 
     if (!text) {
-        ui.showError(t.error_empty || "Please paste a message or URL first.");
+
+        ui.showError(
+            translations.error_empty || "Please enter a URL or message first."
+        );
+
         return;
+
     }
 
     ui.clearError();
 
-    // Analyze message with current selected language context
-    const result = analyzeMessage(text, ui.currentLanguage);
+    try {
 
-    // Render result with confidence levels and safe highlighting
-    ui.renderResult(result, text);
+        // Use the existing FraudsFilter detection engine.
+        const result = analyzeMessage(
+            text,
+            ui.currentLanguage
+        );
+
+        if (!result || !result.risk || !result.confidence) {
+
+            throw new Error("Invalid analysis response.");
+
+        }
+
+        // Store the completed review.
+        saveReview(text, result);
+
+        // Navigate to the separate result page.
+        showDashboardView("result");
+
+        // Display the analysis result.
+        ui.renderResult(result, text);
+
+    } catch (error) {
+
+        console.error("Analysis failed:", error);
+
+        showDashboardView("scanner");
+
+        ui.showError(
+            "Unable to analyse this content. Please try again."
+        );
+
+    }
+
 }
 
-/**
- * Update character count indicator.
- */
-function updateCharCount() {
-    if (!ui.messageInput || !ui.charCount) return;
-    const count = ui.messageInput.value.length;
-    const t = getTranslations(ui.currentLanguage);
-    const template = t.char_count || "{count} characters";
-    ui.charCount.textContent = template.replace("{count}", count);
-}
 
-/**
- * Attach DOM event listeners across all interactive components.
- */
-function initializeEventListeners() {
-    // Character Counter & Error Clearing
-    if (ui.messageInput) {
-        ui.messageInput.addEventListener("input", () => {
+/* ==========================================
+   SAMPLE LINK TESTING
+========================================== */
+
+function initializeSamples() {
+
+    document.querySelectorAll(".sample-link").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const type = button.dataset.sample;
+
+            const sample = sampleData[type];
+
+            if (!sample) return;
+
+            ui.messageInput.value = sample;
+
             updateCharCount();
+
             ui.clearError();
-        });
-
-        // Ctrl + Enter / Cmd + Enter shortcut
-        ui.messageInput.addEventListener("keydown", event => {
-            if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-                event.preventDefault();
-                runAnalysis();
-            }
-        });
-    }
-
-    // Analyze Button
-    if (ui.analyzeBtn) {
-        ui.analyzeBtn.addEventListener("click", runAnalysis);
-    }
-
-    // Sample Button
-    if (ui.sampleBtn) {
-        ui.sampleBtn.addEventListener("click", () => {
-            const sampleText =
-                "URGENT! Your bank account will be blocked within 24 hours. " +
-                "Verify your KYC and OTP immediately by clicking this link: " +
-                "http://secure-account-login.com/verify";
-
-            if (ui.messageInput) {
-                ui.messageInput.value = sampleText;
-                updateCharCount();
-                ui.clearError();
-            }
 
             runAnalysis();
-        });
-    }
 
-    // Language Toggle
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const lang = btn.dataset.lang;
-            if (lang) {
-                ui.setLanguage(lang);
-                updateCharCount();
-            }
         });
+
     });
 
-    // Copy and Share Result
+
+    // Existing Try Sample button.
+    if (ui.sampleBtn) {
+
+        ui.sampleBtn.addEventListener("click", () => {
+
+            ui.messageInput.value = sampleData.high;
+
+            updateCharCount();
+
+            ui.clearError();
+
+            runAnalysis();
+
+        });
+
+    }
+
+}
+
+
+/* ==========================================
+   SCANNER EVENTS
+========================================== */
+
+function initializeScanner() {
+
+    ui.messageInput.addEventListener("input", () => {
+
+        updateCharCount();
+
+        ui.clearError();
+
+    });
+
+
+    ui.messageInput.addEventListener("keydown", event => {
+
+        if (
+            (event.ctrlKey || event.metaKey) &&
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            runAnalysis();
+
+        }
+
+    });
+
+
+    ui.analyzeBtn.addEventListener("click", runAnalysis);
+
+}
+
+
+/* ==========================================
+   RESULT ACTIONS
+========================================== */
+
+function initializeResultActions() {
+
     if (ui.copyResultBtn) {
-        ui.copyResultBtn.addEventListener("click", () => ui.copyResult());
+
+        ui.copyResultBtn.addEventListener("click", () => {
+            ui.copyResult();
+        });
+
     }
 
     if (ui.shareResultBtn) {
-        ui.shareResultBtn.addEventListener("click", () => ui.shareResult());
+
+        ui.shareResultBtn.addEventListener("click", () => {
+            ui.shareResult();
+        });
+
     }
 
-    // User Feedback Buttons
-    document.querySelectorAll(".feedback-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const feedbackType = btn.dataset.feedback;
-            if (feedbackType) {
-                ui.handleFeedbackSelect(feedbackType);
-            }
+    document.querySelectorAll(".feedback-btn").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            ui.handleFeedbackSelect(button.dataset.feedback);
+
         });
+
     });
 
     if (ui.submitFeedbackBtn) {
-        ui.submitFeedbackBtn.addEventListener("click", () => ui.saveFeedback());
+
+        ui.submitFeedbackBtn.addEventListener("click", () => {
+            ui.saveFeedback();
+        });
+
     }
 
     if (ui.exportFeedbackBtn) {
-        ui.exportFeedbackBtn.addEventListener("click", () => ui.exportFeedback());
+
+        ui.exportFeedbackBtn.addEventListener("click", () => {
+            ui.exportFeedback();
+        });
+
     }
+
 }
 
-// Initialize when DOM is ready
-if (typeof document !== "undefined") {
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initializeEventListeners);
-    } else {
-        initializeEventListeners();
-    }
+
+/* ==========================================
+   INITIALIZE APPLICATION
+========================================== */
+
+function initializeApp() {
+
+    initializeNavigation();
+
+    initializeScanner();
+
+    initializeSamples();
+
+    initializeHistory();
+
+    initializeResultActions();
+
+    updateCharCount();
+
+    console.log("FraudsFilter application initialized.");
+
 }
+
+
+if (document.readyState === "loading") {
+
+    document.addEventListener("DOMContentLoaded", initializeApp);
+
+} else {
+
+    initializeApp();
+
+}
+
 
 export {
     ui,
-    runAnalysis
+    runAnalysis,
+    showDashboardView
 };
