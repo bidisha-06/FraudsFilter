@@ -263,6 +263,32 @@ export function analyzeMessage(text, lang = "en") {
         );
     }
 
+    // Remote Access + (Credential Request OR Payment Request OR Authority Impersonation OR Urgency OR Threat)
+    if (categories.has("Remote Access & Screen Sharing") && (categories.has("Credential Request") || categories.has("Payment Request & UPI Fraud") || categories.has("Authority & Courier Impersonation") || categories.has("Account & KYC Verification") || categories.has("Urgency") || categories.has("Threat / Fear"))) {
+        hasDangerousCombo = true;
+        rawScore += 22;
+        reasons.push(
+            lang === "hi"
+                ? "रिमोट एक्सेस ऐप (AnyDesk/TeamViewer) डाउनलोड करने के साथ क्रेडेंशियल या तत्काल कार्रवाई का दबाव अत्यंत खतरनाक स्कैम पैटर्न है।"
+                : lang === "bn"
+                ? "রিমোট অ্যাক্সেস অ্যাপ (AnyDesk/TeamViewer) ডাউনলোডের সাথে তাৎক্ষণিক চাপের সৃষ্টি মারাত্মক জালিয়াতির লক্ষণ।"
+                : "Demanding remote desktop access (AnyDesk, TeamViewer) along with urgency or verification is a high-danger vishing pattern."
+        );
+    }
+
+    // Digital Arrest & Call Coercion + (Authority Impersonation OR Threat / Fear)
+    if (categories.has("Digital Arrest & Call Coercion") && (categories.has("Authority & Courier Impersonation") || categories.has("Threat / Fear") || categories.has("Urgency"))) {
+        hasDangerousCombo = true;
+        rawScore += 22;
+        reasons.push(
+            lang === "hi"
+                ? "डिजिटल अरेस्ट, फोन पर बने रहने का दबाव और कानूनी कार्रवाई की धमकी एक कुख्यात जबरन वसूली स्कैम है।"
+                : lang === "bn"
+                ? "ডিজিটাল অ্যারেস্ট, কল চালু রাখার চাপ এবং আইনি ব্যবস্থার হুমকি মারাত্মক সাইবার চাঁদাবাজির প্রমাণ।"
+                : "Digital arrest coercion with threats of police action or forbidding hanging up is characteristic of cyber extortion calls."
+        );
+    }
+
     // 3 or more distinct scam categories in a single message
     if (categories.size >= 3) {
         hasDangerousCombo = true;
@@ -304,13 +330,107 @@ export function analyzeMessage(text, lang = "en") {
 }
 
 /**
+ * Analyze an audio/call recording transcript specifically for voice phishing (vishing) and call scams.
+ * 
+ * @param {string} transcript - Transcribed text from call recording
+ * @param {object} options - Call metadata (e.g. duration, audioName)
+ * @param {string} lang - Language code ('en', 'hi', 'bn')
+ * @returns {object} Call analysis report including base scoring + call-specific classification
+ */
+export function analyzeCallTranscript(transcript, options = {}, lang = "en") {
+    const baseResult = analyzeMessage(transcript, lang);
+
+    // Call-specific classification
+    let callType = "Routine Communication";
+    let isVishing = false;
+    const vishingRedFlags = [];
+
+    const hasCat = name => baseResult.categories.includes(name);
+
+    if (hasCat("Digital Arrest & Call Coercion") || (hasCat("Authority & Courier Impersonation") && hasCat("Threat / Fear"))) {
+        callType = "Digital Arrest & Law Enforcement Impersonation";
+        isVishing = true;
+        vishingRedFlags.push("Impersonating police, customs, or judicial authorities over the phone.");
+        vishingRedFlags.push("Coercing you to stay on the line and threatening instant arrest.");
+    } else if (hasCat("Remote Access & Screen Sharing")) {
+        callType = "Remote Access / Tech Support Scam";
+        isVishing = true;
+        vishingRedFlags.push("Urging installation of remote control software (AnyDesk / TeamViewer).");
+    } else if (hasCat("Account & KYC Verification") && (hasCat("Credential Request") || hasCat("Urgency"))) {
+        callType = "Bank / Telecom KYC Vishing Scam";
+        isVishing = true;
+        vishingRedFlags.push("Posing as a bank or service provider to solicit OTP or PIN credentials.");
+    } else if (hasCat("Payment Request & UPI Fraud") || hasCat("Fake Reward / Lottery")) {
+        callType = "Advance Fee / Lottery Prize Call Scam";
+        isVishing = true;
+        vishingRedFlags.push("Demanding advance processing fees or requesting PIN to claim money.");
+    } else if (hasCat("Threat / Fear") && hasCat("Urgency")) {
+        callType = "Utility Disconnection / Penalty Threat Call";
+        isVishing = true;
+        vishingRedFlags.push("Threatening immediate disconnection of electricity, power, or phone connection.");
+    } else if (baseResult.risk === "LOW") {
+        callType = "Legitimate Routine Call";
+        isVishing = false;
+    }
+
+    if (hasCat("Credential Request")) {
+        vishingRedFlags.push("Demanding confidential one-time passwords (OTP) or card PINs over voice call.");
+    }
+
+    const callVerdicts = {
+        HIGH: "SCAM CALL DETECTED",
+        MEDIUM: "SUSPICIOUS CALL",
+        LOW: "LIKELY LEGITIMATE CALL"
+    };
+
+    return {
+        ...baseResult,
+        isCallAnalysis: true,
+        callVerdict: callVerdicts[baseResult.risk] || "LIKELY LEGITIMATE CALL",
+        callType,
+        isVishing,
+        vishingRedFlags: Array.from(new Set(vishingRedFlags)),
+        callDuration: options.duration || null,
+        audioName: options.audioName || null
+    };
+}
+
+/**
  * Return actionable safety recommendations according to risk and confidence.
  * 
- * @param {object} result - Output from analyzeMessage
+ * @param {object} result - Output from analyzeMessage or analyzeCallTranscript
  * @param {string} lang - Language code ('en', 'hi', 'bn')
  * @returns {Array<string>}
  */
 export function getRecommendations(result, lang = "en") {
+    if (result.isCallAnalysis && result.risk === "HIGH") {
+        if (lang === "hi") {
+            return [
+                "तुरंत कॉल काट दें (Hang up immediately)। पुलिस, सीबीआई या बैंक कभी भी फोन पर 'डिजिटल अरेस्ट' नहीं करते।",
+                "फोन पर किसी के कहने पर AnyDesk, TeamViewer या QuickSupport जैसे ऐप कभी डाउनलोड न करें।",
+                "फोन कॉल पर कभी भी अपना ओटीपी (OTP), पासवर्ड या यूपीआई पिन किसी को न बताएं।",
+                "संबंधित बैंक या विभाग के आधिकारिक हेल्पलाइन नंबर पर स्वयं कॉल करके पुष्टि करें।",
+                "तुरंत राष्ट्रीय साइबर क्राइम हेल्पलाइन (1930) पर इस नंबर की शिकायत दर्ज कराएं।"
+            ];
+        }
+        if (lang === "bn") {
+            return [
+                "অবিলম্বে ফোন কেটে দিন (Hang up immediately)। পুলিশ, সিবিআই বা ব্যাঙ্ক কখনই ফোনে 'ডিজিটাল অ্যারেস্ট' করে না।",
+                "ফোনে অচেনা ব্যক্তির নির্দেশে কখনই AnyDesk বা TeamViewer অ্যাপ ইনস্টল করবেন না।",
+                "ফোন কলে কখনই আপনার ওটিপি (OTP), পাসওয়ার্ড বা পিন শেয়ার করবেন না।",
+                "প্রতিষ্ঠানটির অফিসিয়াল নম্বরে স্বাধীনভাবে যোগাযোগ করে সত্যতা যাচাই করুন।",
+                "অবিলম্বে জাতীয় সাইবার ক্রাইম হেল্পলাইনে (1930) এই নম্বরের বিরুদ্ধে অভিযোগ জানান।"
+            ];
+        }
+        return [
+            "Hang up immediately! Law enforcement agencies, CBI, and banks NEVER conduct 'digital arrests' or demand money over calls.",
+            "Never download AnyDesk, TeamViewer, or screen-sharing applications on instructions from an incoming caller.",
+            "Never disclose your OTP, PIN, password, or card CVV over a phone call.",
+            "Verify the caller independently by calling the organization's official verified customer support number.",
+            "Report this suspicious call to the Cyber Crime Helpline (dial 1930 in India) or visit cybercrime.gov.in."
+        ];
+    }
+
     if (result.risk === "HIGH") {
         if (lang === "hi") {
             return [
@@ -391,5 +511,6 @@ export default {
     matchWithWordBoundary,
     calculateConfidence,
     analyzeMessage,
+    analyzeCallTranscript,
     getRecommendations
 };

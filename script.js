@@ -1,14 +1,18 @@
 
-import { UIController } from "./ui.js";
+import { UIController, escapeHtml } from "./ui.js";
 import { analyzeMessage } from "./scoring.js";
 import { getTranslations } from "./rules.js";
+import { VoiceAnalyzer } from "./voice.js";
 
 const ui = new UIController();
+let voiceAnalyzer = null;
+let previousView = "scanner";
 
 const landingPage = document.getElementById("landingPage");
 const dashboardApp = document.getElementById("dashboardApp");
 
 const scannerView = document.getElementById("scannerView");
+const voiceView = document.getElementById("voiceView");
 const resultView = document.getElementById("resultView");
 const historyView = document.getElementById("historyView");
 const guideView = document.getElementById("guideView");
@@ -48,21 +52,27 @@ function showDashboardView(view) {
 
     const views = {
         scanner: scannerView,
+        voice: voiceView,
         result: resultView,
         history: historyView,
         guide: guideView
     };
 
     Object.values(views).forEach(element => {
-        element.classList.add("hidden");
+        if (element) element.classList.add("hidden");
     });
 
     if (!views[view]) return;
+
+    if (view === "scanner" || view === "voice") {
+        previousView = view;
+    }
 
     views[view].classList.remove("hidden");
 
     const titles = {
         scanner: ["Dashboard", "Analyse suspicious links and messages."],
+        voice: ["Voice Call Analyzer", "Transcribe speech and detect vishing scams."],
         result: ["Analysis Result", "Review your security assessment."],
         history: ["Review History", "Access your previous analyses."],
         guide: ["Safety Guide", "Learn how to identify online threats."]
@@ -70,6 +80,13 @@ function showDashboardView(view) {
 
     pageTitle.textContent = titles[view][0];
     pageSubtitle.textContent = titles[view][1];
+
+    if (view === "result") {
+        const backBtn = document.getElementById("backToScanner");
+        if (backBtn) {
+            backBtn.textContent = previousView === "voice" ? "← Back to Voice Analyzer" : "← Back to Scanner";
+        }
+    }
 
     document.querySelectorAll(".sidebar-link").forEach(button => {
         button.classList.toggle(
@@ -100,6 +117,15 @@ function initializeNavigation() {
 
     document.getElementById("heroStart")
         .addEventListener("click", openDashboard);
+
+    const heroVoiceStart = document.getElementById("heroVoiceStart");
+    if (heroVoiceStart) {
+        heroVoiceStart.addEventListener("click", () => {
+            landingPage.classList.add("hidden");
+            dashboardApp.classList.remove("hidden");
+            showDashboardView("voice");
+        });
+    }
 
     document.getElementById("aboutStart")
         .addEventListener("click", openDashboard);
@@ -134,7 +160,7 @@ function initializeNavigation() {
 
     document.getElementById("backToScanner")
         .addEventListener("click", () => {
-            showDashboardView("scanner");
+            showDashboardView(previousView || "scanner");
         });
 
 }
@@ -163,7 +189,7 @@ function getHistory() {
 }
 
 
-function saveReview(text, result) {
+function saveReview(text, result, isVoice = false, meta = {}) {
 
     const history = getHistory();
 
@@ -172,7 +198,10 @@ function saveReview(text, result) {
         text: text,
         risk: result.risk,
         confidence: result.confidence?.level || "LOW",
-        date: new Date().toLocaleString()
+        date: new Date().toLocaleString(),
+        isVoice: isVoice || result.isCallAnalysis || false,
+        callType: result.callType || null,
+        audioName: meta.audioName || result.audioName || null
     };
 
     history.unshift(review);
@@ -203,7 +232,7 @@ function renderHistory() {
         historyList.innerHTML = `
             <div class="history-empty">
                 <h3>No Reviews Yet</h3>
-                <p>Your analysed URLs and messages will appear here.</p>
+                <p>Your analysed URLs, messages, and calls will appear here.</p>
             </div>
         `;
 
@@ -226,10 +255,14 @@ function renderHistory() {
         details.className = "history-details";
 
         const text = document.createElement("b");
-        text.textContent = item.text;
+        if (item.isVoice) {
+            text.innerHTML = `<span class="history-voice-pill">🎙️ VOICE CALL</span> ${item.callType ? `<b>${escapeHtml(item.callType)}</b>: ` : ""}${escapeHtml(item.text)}`;
+        } else {
+            text.textContent = item.text;
+        }
 
         const date = document.createElement("small");
-        date.textContent = item.date;
+        date.textContent = `${item.date}${item.audioName ? ` • ${item.audioName}` : ""}`;
 
         details.append(text, date);
 
@@ -239,13 +272,22 @@ function renderHistory() {
 
         reviewButton.addEventListener("click", () => {
 
-            ui.messageInput.value = item.text;
-
-            updateCharCount();
-
-            showDashboardView("scanner");
-
-            runAnalysis();
+            if (item.isVoice) {
+                if (voiceAnalyzer && voiceAnalyzer.transcriptTextarea) {
+                    voiceAnalyzer.transcriptTextarea.value = item.text;
+                    voiceAnalyzer.updateTranscriptStats();
+                    if (voiceAnalyzer.transcriptContainer) {
+                        voiceAnalyzer.transcriptContainer.classList.remove("hidden");
+                    }
+                }
+                showDashboardView("voice");
+                voiceAnalyzer?.runCallAnalysis();
+            } else {
+                ui.messageInput.value = item.text;
+                updateCharCount();
+                showDashboardView("scanner");
+                runAnalysis();
+            }
 
         });
 
@@ -505,6 +547,24 @@ function initializeResultActions() {
 
 
 /* ==========================================
+   VOICE ANALYZER INITIALIZATION
+========================================== */
+
+function initializeVoice() {
+
+    voiceAnalyzer = new VoiceAnalyzer({
+        onAnalysisComplete: (result, transcript) => {
+            saveReview(transcript, result, true, { audioName: result.audioName });
+            previousView = "voice";
+            showDashboardView("result");
+            ui.renderResult(result, transcript);
+        }
+    });
+
+}
+
+
+/* ==========================================
    INITIALIZE APPLICATION
 ========================================== */
 
@@ -513,6 +573,8 @@ function initializeApp() {
     initializeNavigation();
 
     initializeScanner();
+
+    initializeVoice();
 
     initializeSamples();
 
@@ -540,6 +602,7 @@ if (document.readyState === "loading") {
 
 export {
     ui,
+    voiceAnalyzer,
     runAnalysis,
     showDashboardView
 };

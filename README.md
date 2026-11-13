@@ -24,7 +24,23 @@ The platform aims to make online safety awareness easier through URL analysis, r
 - Submit suspicious links for risk assessment.
 - Simple and user-friendly scanning interface.
 
-### 4. Separate Analysis Result Page
+### 4. 🎙️ Voice Call Analyzer (New)
+- **Audio File Upload & Live Recording**: Upload call recordings (`.mp3`, `.wav`, `.m4a`, `.ogg`, `.webm`) or record live incoming phone audio with the browser microphone.
+- **Audio Player & Waveform Visualizer**: Interactive audio player with custom controls, seek timeline, duration display, and live reactive waveform visualization.
+- **In-Browser Whisper AI Transcription (Transformers.js)**: Runs OpenAI's Whisper model (`Xenova/whisper-tiny.en`) directly inside the browser using `@xenova/transformers`.
+  - **Zero Backend**: All speech-to-text inference runs locally in client-side WebAssembly / Web Audio API.
+  - **Zero API Keys**: Free, open-source model running on the user's device without any API tokens or credentials.
+  - **Smooth Audio Extraction**: Decodes audio formats and resamples to 16,000 Hz mono PCM `Float32Array` before running chunked Whisper inference.
+  - **Live Dictate / Mic Option**: Also supports real-time microphone dictation for fast hands-free testing.
+- **Vishing & Scam Call Detection**: Evaluates the transcribed call against scam categories, identifying:
+  - Law enforcement & CBI impersonation (Digital Arrest scams)
+  - Bank & telecom KYC suspension threats demanding OTPs/PINs
+  - Remote desktop software solicitation (AnyDesk, TeamViewer)
+  - Utility disconnection extortion calls
+- **Sample Call Recordings**: 1-click test scenarios with realistic audio and verified transcripts (CBI Digital Arrest, Bank KYC Vishing, Routine Clinic Appointment).
+- **Vishing Safety Recommendations**: Actionable emergency guidance (hang up immediately, report to Cyber Crime Helpline 1930).
+
+### 5. Separate Analysis Result Page
 - Displays the analysis result in a separate view after URL submission.
 - Presents the detected risk level.
 - Provides relevant information to help users understand the result.
@@ -58,7 +74,9 @@ Includes sample URLs to help users understand and test the scanner:
 |---|---|
 | HTML5 | Website structure |
 | CSS3 | Styling and responsive layout |
-| JavaScript | Application functionality and interactions |
+| JavaScript (ES Modules) | Application functionality and interactions |
+| Web Audio API & MediaRecorder | In-browser audio decoding, playback, and live mic capture |
+| Web Speech API | Client-side speech-to-text recognition |
 | Local Storage | Storing review history in the browser |
 
 ---
@@ -77,10 +95,20 @@ FraudsFilter/
 ├── rules.json
 ├── url.js
 ├── ui.js
+├── voice.js
 │
 ├── assets/
+│   ├── audio/
+│   │   ├── cbi_digital_arrest_scam.wav
+│   │   ├── bank_kyc_fraud_call.wav
+│   │   └── legitimate_appointment_call.wav
 │   ├── images/
 │   └── icons/
+│
+├── tests/
+│   ├── detection.test.js
+│   ├── ui.test.js
+│   └── voice.test.js
 │
 └── README.md
 ```

@@ -118,7 +118,11 @@
           "netbanking password",
           "card details",
           "atm pin",
-          "security code"
+          "security code",
+          "6-digit otp",
+          "otp verification code",
+          "tell me the otp",
+          "share the otp"
         ],
         "hi": [
           "otp bataye",
@@ -210,7 +214,11 @@
           "e-kyc pending",
           "submit kyc",
           "kyc suspended",
-          "unblock account"
+          "unblock account",
+          "debit card",
+          "pending kyc verification",
+          "kyc verification",
+          "card verification"
         ],
         "hi": [
           "kyc update kare",
@@ -346,7 +354,12 @@
           "fedex parcel illegal",
           "pm kisan yojana",
           "pm mudra loan",
-          "narcotics in package"
+          "narcotics in package",
+          "cyber crime branch",
+          "crime branch",
+          "mumbai police",
+          "delhi police",
+          "telecom department"
         ],
         "hi": [
           "sarkari afsar",
@@ -365,6 +378,107 @@
           "customs theke parcel",
           "cbi theke bolchi",
           "parcel seized hoyeche"
+        ]
+      }
+    },
+    {
+      "id": "remote_access_scam",
+      "name": "Remote Access & Screen Sharing",
+      "points": 18,
+      "reason": {
+        "en": "Demands installation of remote desktop or screen-sharing software (AnyDesk, TeamViewer, QuickSupport) to take over your device.",
+        "hi": "डिवाइस पर नियंत्रण पाने के लिए रिमोट डेस्कटॉप या स्क्रीन शेयरिंग ऐप (AnyDesk, TeamViewer) डाउनलोड करने का दबाव बनाता है।",
+        "bn": "ডিভাইসের নিয়ন্ত্রণ নিতে রিমোট ডেস্কটপ বা স্ক্রিন শেয়ারিং সফটওয়্যার (AnyDesk, TeamViewer) ইনস্টল করার দাবি করে।"
+      },
+      "words": {
+        "en": [
+          "anydesk",
+          "teamviewer",
+          "quicksupport",
+          "rustdesk",
+          "ultraviewer",
+          "airdroid",
+          "remote access",
+          "screen share",
+          "share your screen",
+          "share screen",
+          "screen sharing",
+          "allow remote",
+          "remote control",
+          "download app from play store",
+          "install app to verify",
+          "install remote support",
+          "9 digit address",
+          "9 digit code",
+          "grant permission"
+        ],
+        "hi": [
+          "anydesk download",
+          "teamviewer download",
+          "screen share kare",
+          "remote access de",
+          "quicksupport download",
+          "play store se app download kare",
+          "9 ank ka code bataye"
+        ],
+        "bn": [
+          "anydesk download korun",
+          "teamviewer install korun",
+          "screen share korun",
+          "remote access din",
+          "play store theke app namiye"
+        ]
+      }
+    },
+    {
+      "id": "digital_arrest_coercion",
+      "name": "Digital Arrest & Call Coercion",
+      "points": 18,
+      "reason": {
+        "en": "Coerces the victim to stay on the call under fake 'digital arrest', demanding isolation and forbidding contact with others.",
+        "hi": "नकली 'डिजिटल अरेस्ट' के तहत फोन पर बंधक बनाता है, कमरे में अकेले रहने और किसी को न बताने का दबाव देता है।",
+        "bn": "নকল 'ডিজিটাল অ্যারেস্ট'-এর অধীনে ফোনে বন্দি করে, ঘরে একা থাকতে এবং কাউকে না জানানোর জন্য চাপ দেয়।"
+      },
+      "words": {
+        "en": [
+          "digital arrest",
+          "do not disconnect",
+          "do not hang up",
+          "stay on the call",
+          "stay on the line",
+          "do not tell anyone",
+          "confidential investigation",
+          "room isolation",
+          "isolated room",
+          "video call for verification",
+          "arrest warrant issued",
+          "narcotics bureau",
+          "customs clearance",
+          "security clearance account",
+          "reserve bank verification account",
+          "hang up and police will arrive",
+          "official secrets act"
+        ],
+        "hi": [
+          "digital arrest",
+          "phone mat katna",
+          "call disconnect mat karna",
+          "line par bane rahe",
+          "kisi ko mat batana",
+          "kamre me akele rahe",
+          "video call par aaye",
+          "giraftari warrant",
+          "police ghar pahunch jayegi",
+          "gupt janch"
+        ],
+        "bn": [
+          "digital arrest",
+          "phone katben na",
+          "line e thakun",
+          "kauke janaben na",
+          "ghore eka thakun",
+          "police barite chole ashbe",
+          "gopon todonto"
         ]
       }
     }
