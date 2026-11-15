@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +18,14 @@
 
     <header class="landing-header">
       <a href="#home" class="brand">
-        <span class="brand-icon">🛡</span>
+        <span class="brand-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.7 3.1 8.4 7.5 10 4.4-1.6 7.5-5.3 7.5-10v-6L12 2.5Z"/></svg>
+        </span>
         <span>Frauds<span class="purple">Filter</span></span>
       </a>
 
       <nav>
-        <a href="#home">Home</a>
+        <a href="#home" class="active">Home</a>
         <a href="#features">Features</a>
         <a href="#how">How It Works</a>
         <a href="#about">About</a>
@@ -37,43 +38,108 @@
 
     <main>
       <section class="hero" id="home">
-        <div class="hero-copy">
-          <span class="eyebrow">AI-POWERED DIGITAL SAFETY</span>
 
-          <h1>
-            Stay One Step Ahead of
-            <span>Every Digital Scam.</span>
-          </h1>
+        <!-- decorative background -->
+        <svg class="hero-wave wave-left" viewBox="0 0 400 520" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 40C80 90 130 200 60 330S120 480 0 520" fill="none" stroke="#19f0e6" stroke-opacity=".55" stroke-width="2"/>
+          <path d="M0 80C70 130 105 215 45 335S95 470 0 505" fill="none" stroke="#19f0e6" stroke-opacity=".3" stroke-width="1.5"/>
+          <path d="M0 0C110 40 170 190 100 330S150 490 0 520V0Z" fill="#19f0e6" fill-opacity=".05"/>
+        </svg>
+        <svg class="hero-wave wave-right" viewBox="0 0 420 300" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M420 40C330 60 280 170 180 200S60 270 0 300" fill="none" stroke="#19f0e6" stroke-opacity=".55" stroke-width="2"/>
+          <path d="M420 90C340 105 300 200 200 235S90 285 30 300" fill="none" stroke="#19f0e6" stroke-opacity=".3" stroke-width="1.5"/>
+          <path d="M420 0C330 40 290 160 190 195S70 265 0 300H420V0Z" fill="#19f0e6" fill-opacity=".05"/>
+        </svg>
+        <div class="hero-mesh" aria-hidden="true"></div>
 
-          <p>
-            Your intelligent security companion. Detect suspicious
-            URLs, identify potential fraud and make safer decisions
-            before clicking, replying or paying.
-          </p>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow eyebrow-line">AI-POWERED DIGITAL SAFETY</span>
 
-          <div class="hero-buttons">
-            <button class="primary-btn" id="heroStart">
-              Start Protecting Yourself →
-            </button>
-            <button class="secondary-btn" id="heroVoiceStart">
-              🎙️ Voice Call Analyzer
-            </button>
-            <a href="#features" class="secondary-btn">
-              Explore Features
-            </a>
+            <h1>
+              Stay One Step<br>
+              Ahead of <span>Every<br>Digital Scam.</span>
+            </h1>
+
+            <p>
+              Your intelligent security companion. Detect suspicious
+              URLs, identify potential fraud and make safer decisions
+              before clicking, replying or paying.
+            </p>
+
+            <div class="hero-buttons">
+              <button class="primary-btn" id="heroStart">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.7 3.1 8.4 7.5 10 4.4-1.6 7.5-5.3 7.5-10v-6L12 2.5Z"/></svg>
+                Start Protecting Yourself →
+              </button>
+              <button class="secondary-btn" id="heroVoiceStart">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11.5a7 7 0 0 0 14 0M12 18.5v3"/></svg>
+                Voice Call Analyzer
+              </button>
+              <a href="#features" class="secondary-btn">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+                Explore Features
+              </a>
+            </div>
+
+            <div class="trust-note">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.7 3.1 8.4 7.5 10 4.4-1.6 7.5-5.3 7.5-10v-6L12 2.5Z"/><path d="m8.8 12 2.4 2.4 4.2-4.6"/></svg>
+              <em>Think before you trust. Stay digitally protected.</em>
+            </div>
           </div>
 
-          <div class="trust-note">
-            ✓ Think before you trust. Stay digitally protected.
-          </div>
-        </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="glow-platform">
+              <span class="ring ring-1"></span>
+              <span class="ring ring-2"></span>
+              <span class="ring ring-3"></span>
+            </div>
+            <div class="orbit-circle"></div>
 
-        <div class="hero-visual">
-          <div class="hero-shield">🛡️</div>
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <span class="floating-tag tag-one">✓ Secure Analysis</span>
-          <span class="floating-tag tag-two">⚡ Threat Detection</span>
+            <div class="hero-shield-3d">
+              <svg viewBox="0 0 200 230" width="100%" height="100%">
+                <defs>
+                  <linearGradient id="shieldEdge" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#9dfff6"/>
+                    <stop offset="1" stop-color="#0aa8a8"/>
+                  </linearGradient>
+                  <linearGradient id="shieldFace" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#0f5a5f"/>
+                    <stop offset="1" stop-color="#03181d"/>
+                  </linearGradient>
+                  <linearGradient id="shieldHalf" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#3ff5e8" stop-opacity=".35"/>
+                    <stop offset="1" stop-color="#3ff5e8" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M100 6 18 38v66c0 52 34 90 82 120 48-30 82-68 82-120V38L100 6Z" fill="url(#shieldEdge)"/>
+                <path d="M100 20 31 46v58c0 44 28 77 69 104 41-27 69-60 69-104V46L100 20Z" fill="url(#shieldFace)"/>
+                <path d="M100 20 31 46v58c0 44 28 77 69 104Z" fill="url(#shieldHalf)"/>
+                <path d="M100 30 42 52v52c0 38 24 67 58 91 34-24 58-53 58-91V52L100 30Z" fill="none" stroke="#3ff5e8" stroke-opacity=".5" stroke-width="1.5"/>
+                <rect x="72" y="96" width="56" height="46" rx="8" fill="#eafffe"/>
+                <path d="M82 96V84a18 18 0 0 1 36 0v12" fill="none" stroke="#eafffe" stroke-width="9" stroke-linecap="round"/>
+                <circle cx="100" cy="115" r="6" fill="#06353a"/>
+                <rect x="97.5" y="117" width="5" height="14" rx="2.5" fill="#06353a"/>
+              </svg>
+            </div>
+
+            <div class="glass-card gc-url">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>
+              <span>URL<br>Scanning</span>
+            </div>
+            <div class="glass-card gc-voice">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/><path d="M15 3.5a6 6 0 0 1 5.5 5.5M15 7a3 3 0 0 1 2.5 2.5"/></svg>
+              <span>Voice Call<br>Analysis</span>
+            </div>
+            <div class="glass-card gc-threat">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="m12 8 1.3 2.7L16 12l-2.7 1.3L12 16l-1.3-2.7L8 12l2.7-1.3L12 8Z"/></svg>
+              <span>Threat<br>Detection</span>
+            </div>
+            <div class="glass-card gc-risk">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><rect x="4" y="13" width="4" height="7" rx="1"/><rect x="10" y="8" width="4" height="12" rx="1"/><rect x="16" y="3" width="4" height="17" rx="1"/></svg>
+              <span>Risk<br>Assessment</span>
+            </div>
+          </div>
         </div>
       </section>
 
