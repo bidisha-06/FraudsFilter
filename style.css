@@ -435,7 +435,6 @@ a {
   height: 288px;
   margin-top: -30px;
   filter: drop-shadow(0 0 40px rgba(25, 240, 230, .55));
-  animation: shieldFloat 5s ease-in-out infinite;
 }
 
 .glass-card {
@@ -459,7 +458,6 @@ a {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, .5), inset 0 0 18px rgba(25, 240, 230, .12);
-  animation: cardFloat 6s ease-in-out infinite;
 }
 
 .glass-card span {
@@ -476,40 +474,19 @@ a {
   top: 4px;
   right: 2%;
   transform: rotate(5deg);
-  animation-delay: -1.5s;
 }
 
 .gc-threat {
   top: 54%;
   left: 0;
   transform: rotate(-4deg);
-  animation-delay: -3s;
 }
 
 .gc-risk {
   top: 56%;
   right: 0;
   transform: rotate(6deg);
-  animation-delay: -4.5s;
 }
-
-@keyframes shieldFloat {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -10px; }
-}
-
-@keyframes cardFloat {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -8px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-shield-3d,
-  .glass-card {
-    animation: none;
-  }
-}
-
 /* LANDING SECTIONS */
 
 .landing-section {
@@ -1025,7 +1002,6 @@ footer {
   border-radius: 8px;
   font-size: 11px;
 }
-
 /* RESULT PAGE */
 
 .back-button {
@@ -1677,7 +1653,6 @@ footer {
   color: #8b8493;
   font-size: 10px;
 }
-
 /* DROPZONE */
 
 .audio-dropzone {
